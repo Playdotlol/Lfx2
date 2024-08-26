@@ -1,6 +1,7 @@
 function Help() {
     var x = localStorage.getItem("TabImage");
-    var faviconUrl = x || "/images/clever.jpg"; // Use the localStorage value if it exists, otherwise use the default
+    var p = window.location.href
+    var faviconUrl = x || "${p}/images/clever.jpg"; // Use the localStorage value if it exists, otherwise use the default
 
     let link = document.createElement('link');
     link.rel = 'icon';
