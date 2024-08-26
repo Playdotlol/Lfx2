@@ -149,8 +149,10 @@
           startDelay: 1e3
       }).type("404 Not Found...").go()
   </script>
-      <a href="/">Home</a>
-      <a href="/proxy.html">Proxy</a>
+    <div class="container">
+      <a class="link" href="/">Home</a>
+      <a class="link" href="/proxy.html">Proxy</a>
+    </div>
     <style>
         a {
         float: left;
@@ -165,6 +167,17 @@
     a:hover {
         background-color: red;
       }
+    .container {
+    position: relative;
+    width: 400px;
+    height: 300px;
+      }
+
+    .link {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+     }
     </style>
   </body>
 </html>
