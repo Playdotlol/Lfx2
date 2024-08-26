@@ -140,7 +140,7 @@
 <body>
 
 <center><bold><strong><h1>404</h1></strong></bold></center>
-<input type="button" id="home" class="home" value="Home" onclick='window.open("/")' />
+<center><input type="button" id="home" class="home" value="Home" onclick='myFunction()' /></center>
   </p></h1>
   <script>
       new TypeIt(".typing_desc",{
@@ -149,7 +149,11 @@
           startDelay: 1e3
       }).type("404 Not Found...").go()
   </script>
- <center><button class="home" id="home" src="/">Home</button></center>
+<script>
+function myFunction() {
+  location.replace("/")
+}
+</script>
     <style>
         .home {
         float: left;
