@@ -9,6 +9,7 @@
   <script>Help()</script>
   <script src="/tabcloakername.js"></script>
   <script>Help1()</script>
+  <script src=https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -139,6 +140,14 @@
 <body>
 
     <center><p class="ex2">404</p></center>
-      <center><h3>Not Found...</h3></center>
+       <center><h1><span class=typing_desc style=font-size:20px></span></center>
+  </p></h1>
+  <script>
+      new TypeIt(".typing_desc",{
+          speed: 90,
+          waitUntilVisible: !0,
+          startDelay: 1e3
+      }).type("404 Not Found...").go()
+  </script>
   </body>
 </html>
