@@ -141,7 +141,9 @@
 
 <center><bold><strong><h1>404</h1></strong></bold></center>
           <center><h1><span class=typing_desc style=font-size:18px></span></center>
-<div style="text-align:center;"><input type="button" id="home" class="home" value="Home" onclick='myFunction()' align="middle"></div>
+<div style="text-align:center;"><form action="/">
+    <input type="submit" value="Home" />
+</form></div>
   </p></h1>
   <script>
       new TypeIt(".typing_desc",{
@@ -150,11 +152,6 @@
           startDelay: 1e3
       }).type("404 Not Found...").go()
   </script>
-<script>
-function myFunction() {
-  location.replace("/")
-}
-</script>
     <style>
         .home {
         float: middle;
