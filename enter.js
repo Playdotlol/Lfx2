@@ -39,14 +39,5 @@ function saveToLocalStorage(input, storageKey, helpFunction) {
         input.value = '';
     }
 }
-
-function Help3() {
-    console.log("Help function for TabImage called.");
-}
-
-function Help4() {
-    console.log("Help function for TabText called.");
-}
-
 // Initialize when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initInputHandlers);
