@@ -1,44 +1,31 @@
-var script = document.createElement('script');
-script.src = 'https://code.jquery.com/jquery-3.6.3.min.js'; // Check https://jquery.com/ for the current version
-document.getElementsByTagName('head')[0].appendChild(script); // Check https://jquery.com/ for the current version
-
-function EnterKey() {
-  if (typeof $ === 'undefined') {
-    console.error("jQuery is not loaded. Please include jQuery before this script.");
-    return;
-  }
-
-  var input = document.getElementById('ImageLocalStorage'); // Assuming there is an input element with id 'ImageLocalStorage'
-
-  $(input).on('keyup', function (e) {
-    if (e.key === 'Enter' || e.keyCode === 13) {
-      var inputValue = $(this).val(); // Get the value of the input
-      if (inputValue) {
-        localStorage.setItem("TabImage", inputValue);
-        Help();
-      }
-      // Optionally, you can clear the input after pressing Enter
-      $(this).val('');
-    }
-  });
+function initInputHandlers() {
+    setupInputHandler('ImageLocalStorage', 'TabImage', Help, 'ImageLocalStorage');
+    setupInputHandler('TextLocalStorage', 'TabText', Help1, 'TextLocalStorage');
 }
-function EnterKey2() {
-  if (typeof $ === 'undefined') {
-    console.error("jQuery is not loaded. Please include jQuery before this script.");
-    return;
-  }
 
-  var input = document.getElementById('TextLocalStorage'); // Assuming there is an input element with id 'ImageLocalStorage'
+function setupInputHandler(inputId, storageKey, helpFunction, buttonId) {
+    var input = document.getElementById(inputId);
+    var button = document.getElementById(buttonId);
 
-  $(input).on('keyup', function (e) {
-    if (e.key === 'Enter' || e.keyCode === 13) {
-      var inputValue = $(this).val(); // Get the value of the input
-      if (inputValue) {
-        localStorage.setItem("TabText", inputValue);
-        Help1();
-      }
-      // Optionally, you can clear the input after pressing Enter
-      $(this).val('');
+    if (!input || !button) {
+        console.error(`Element with ID ${!input ? inputId : buttonId} not found.`);
+        return;
     }
-  });
+
+    button.addEventListener('click', function () {
+        var inputValue = input.value.trim(); // Get the value of the input and trim whitespace
+        if (inputValue) {
+            try {
+                localStorage.setItem(storageKey, inputValue);
+                helpFunction(); // Call the provided help function
+            } catch (error) {
+                console.error("Failed to save to local storage: ", error);
+            }
+        }
+        // Optionally, clear the input after saving
+        input.value = '';
+    });
 }
+
+// Initialize when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', initInputHandlers);
