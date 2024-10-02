@@ -40,11 +40,11 @@ function saveToLocalStorage(input, storageKey, helpFunction) {
     }
 }
 
-function Help() {
+function Help3() {
     console.log("Help function for TabImage called.");
 }
 
-function Help1() {
+function Help4() {
     console.log("Help function for TabText called.");
 }
 
