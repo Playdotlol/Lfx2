@@ -30,15 +30,15 @@ function saveToLocalStorage(input, storageKey, helpFunction) {
     var inputValue = input.value.trim(); // Get the value of the input and trim whitespace
 
     // Check if inputValue needs to be modified
-    if (inputValue && !inputValue.startsWith('http://') && !inputValue.startsWith('https://')) {
+    if (inputValue && !inputValue.startsWith('https://')) {
         if (!inputValue.includes('/images/')) {
-            inputValue = 'http://' + inputValue; // Prepend http:// if it doesn't start with http or https and is not an image path
+            inputValuehttp = 'https://' + inputValue; // Prepend http:// if it doesn't start with http or https and is not an image path
         }
     }
 
     if (inputValue) {
         try {
-            localStorage.setItem(storageKey, inputValue);
+            localStorage.setItem(storageKey, inputValuehttp);
             helpFunction(); // Call the provided help function
             updateFavicon(inputValue); // Update the favicon with the new URL
         } catch (error) {
