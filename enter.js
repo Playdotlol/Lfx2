@@ -40,12 +40,19 @@ function saveToLocalStorage(input, storageKey, helpFunction) {
         try {
             localStorage.setItem(storageKey, inputValue);
             helpFunction(); // Call the provided help function
+            updateFavicon(inputValue); // Update the favicon with the new URL
         } catch (error) {
             console.error("Failed to save to local storage: ", error);
         }
         // Optionally, clear the input after saving
         input.value = '';
     }
+}
+
+// Function to update the favicon
+function updateFavicon(url) {
+    var faviconLink = document.getElementById('favicon');
+    faviconLink.href = url; // Set the href of the favicon link to the new URL
 }
 
 // Initialize when the DOM is fully loaded
