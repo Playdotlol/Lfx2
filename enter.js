@@ -28,6 +28,14 @@ function setupInputHandler(inputId, storageKey, helpFunction, buttonId) {
 // Function to save the input value to local storage
 function saveToLocalStorage(input, storageKey, helpFunction) {
     var inputValue = input.value.trim(); // Get the value of the input and trim whitespace
+
+    // Check if inputValue needs to be modified
+    if (inputValue && !inputValue.startsWith('http://') && !inputValue.startsWith('https://')) {
+        if (!inputValue.includes('/images/')) {
+            inputValue = 'http://' + inputValue; // Prepend http:// if it doesn't start with http or https and is not an image path
+        }
+    }
+
     if (inputValue) {
         try {
             localStorage.setItem(storageKey, inputValue);
@@ -39,5 +47,6 @@ function saveToLocalStorage(input, storageKey, helpFunction) {
         input.value = '';
     }
 }
+
 // Initialize when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initInputHandlers);
