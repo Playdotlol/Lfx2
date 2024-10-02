@@ -32,11 +32,11 @@ function saveToLocalStorage(input, storageKey, helpFunction) {
     // Check if inputValue needs to be modified
     if (inputValue && !inputValue.startsWith('https://')) {
         if (!inputValue.includes('/images/')) {
-            inputValuehttp = 'https://' + inputValue; // Prepend http:// if it doesn't start with http or https and is not an image path
+            const inputValuehttp = 'https://' + inputValue; // Prepend http:// if it doesn't start with http or https and is not an image path
         }
     }
 
-    if (inputValue) {
+    if (inputValuehttp) {
         try {
             localStorage.setItem(storageKey, inputValuehttp);
             helpFunction(); // Call the provided help function
