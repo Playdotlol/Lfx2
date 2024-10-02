@@ -1,3 +1,4 @@
+function Help() {
 function initInputHandlers() {
     setupInputHandler('ImageLocalStorage', 'TabImage', Help, 'ImageLocalStorage');
     setupInputHandler('TextLocalStorage', 'TabText', Help1, 'TextLocalStorage');
@@ -29,3 +30,4 @@ function setupInputHandler(inputId, storageKey, helpFunction, buttonId) {
 
 // Initialize when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initInputHandlers);
+}
