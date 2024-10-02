@@ -1,6 +1,6 @@
 function initInputHandlers() {
-    setupInputHandler('ImageLocalStorage', 'TabImage', Help, 'saveImageButton');
-    setupInputHandler('TextLocalStorage', 'TabText', Help1, 'saveTextButton');
+    setupInputHandler('ImageLocalStorage', 'TabImage', Help, 'ImageLocalStorage');
+    setupInputHandler('TextLocalStorage', 'TabText', Help1, 'TextLocalStorage');
 }
 
 function setupInputHandler(inputId, storageKey, helpFunction, buttonId) {
