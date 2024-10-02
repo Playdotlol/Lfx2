@@ -163,34 +163,48 @@
           <body>
             <h1>About:Blank</h1>
             <button id="openGame" class="openGame" onclick="openGame()">Open in About:Blank</button></center>
-            <script>
-            function openGame() {
-              var urlObj = new window.URL(window.location.href);
-              let gfg = window.location.href;
-              var url = gfg; //this is the link, replace it with your own
-              if (url) {
-                var win;
+<script>
+function openGame() {
+  var urlObj = new window.URL(window.location.href);
+  let gfg = window.location.href;
+  var url = gfg; // this is the link, replace it with your own
+  if (url) {
+    var win;
 
-                document.getElementById('openGame').onclick = function() {
-                  if (win) {
-                    win.focus();
-                  } else {
-                    win = window.open();
-                    win.document.body.style.margin = '0';
-                    win.document.body.style.height = '100vh';
-                    var iframe = win.document.createElement('iframe');
-                    iframe.style.border = 'none';
-                    iframe.style.width = '100%';
-                    iframe.style.height = '100%';
-                    iframe.style.margin = '0';
-                    iframe.src = url;
-                    win.document.body.appendChild(iframe);
-                  }
-                  console.log('hsello');
-                };
-              }
-            }
-            </script>
+    document.getElementById('openGame').onclick = function() {
+      if (win) {
+        win.focus();
+      } else {
+        win = window.open();
+        win.document.body.style.margin = '0';
+        win.document.body.style.height = '100vh';
+        
+        // Set the title and favicon
+        let tabText = localStorage.getItem('TabText') || 'Clever | Portal';
+        let tabImage = localStorage.getItem('TabImage') || 'https://loungef2x.vercel.app';
+
+        win.document.title = tabText;
+
+        // Create and set the favicon
+        let link = win.document.createElement('link');
+        link.rel = 'icon';
+        link.href = tabImage;
+        win.document.head.appendChild(link);
+
+        var iframe = win.document.createElement('iframe');
+        iframe.style.border = 'none';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.margin = '0';
+        iframe.src = url;
+        
+        win.document.body.appendChild(iframe);
+      }
+    };
+  }
+}
+</script>
+
           </body>
         </div>
     </div>    
