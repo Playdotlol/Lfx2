@@ -55,9 +55,14 @@ function saveToLocalStorage(input, storageKey, helpFunction) {
 }
 
 // Function to update the favicon
+// Function to update the favicon
 function updateFavicon(url) {
     var faviconLink = document.getElementById('favicon');
-    faviconLink.href = url; // Set the href of the favicon link to the new URL
+    if (faviconLink) { // Check if the favicon link exists
+        faviconLink.href = url; // Set the href of the favicon link to the new URL
+    } else {
+        console.error("Favicon link element not found.");
+    }
 }
 
 // Initialize when the DOM is fully loaded
