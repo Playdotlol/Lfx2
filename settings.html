@@ -5,18 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clever</title>
-  <link rel="shortcut icon" type="image/x-icon" href="/images/clever.jpg"/>
+    <link id="favicon" rel="icon" href="" type="image/png"> <!-- Ensure this link is present -->
   <script src="/tabcloaker.js"></script>
   <script>Help()</script>
   <script src="/tabcloakername.js"></script>
   <script>Help1()</script>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-</head>
-<body>
-</style>
+    <style>.CDF{padding:15px;width:92.5%;border-radius:10px;background:white;text-align:center;font-size:20px;border:none;outline:none;color:Black;margin-top:10px}.settings-title{display:block;font-size:70px;margin-block-start:.67em;margin-block-end:.67em;margin-inline-start:0;margin-inline-end:0;font-weight:700}.white{color: white;}.settings-container{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;padding:10% 10px 10px}.settings-card{background-color:black;border-radius:10px;padding:20px;box-shadow:0 4px 6px rgba(0,0,0,.1);width:400px;transition:all .3s ease}.settings-card:hover{transform:translatey(-5px);box-shadow:0 8px 12px rgba(0,0,0,.2)}.settings-card h3{margin-top:0;color:var(-t-primary-tex)}.settings-card p{color:white}a{color:var(--text-primary)}</style>
 </head>
 <body>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -140,28 +135,21 @@
 </style>
 </head>
 <body>
-
-<script src="enter.js"></script>
-<script src="enter2.js"></script>
-  <center><h3>Work In Progress.</h3>
-
-  <div class="container">
-    <div class="center">
-    <h1>Tab Image</h1>
-  <input type="text" id="ImageLocalStorage" class="ImageLocalStorage" onclick="EnterKey()" placeholder=" Tab Image URL"><br>
-    </div>
+    <script src="enter.js" defer></script>
+  <div class="settings-container">
+    <div class="settings-card">
+    <h1 class="white">Tab Image</h1>
+        <p class="white">Put in the url that you want the image of the tab to be.</p>
+  <input type="text" id="ImageLocalStorage" class="CDF" placeholder="Tab Image URL"><br>
   </div>
-  <div class="container">
-    <div class="center">
-    <h1>Tab Name</h1>
-  <input type="text" id="TextLocalStorage" class="TextLocalStorage" onclick="EnterKey2()" placeholder="Tab Name"><br>
-        </div>
+    <div class="settings-card">
+    <h1 class="white">Tab Name</h1>
+                <p class="white">Put in the name that you want the title of the tab to be.</p>
+  <input type="text" id="TextLocalStorage" class="CDF" placeholder="Tab Name"><br>
       </div>
-
-    <div class="container">
-        <div class="center">
-          <body>
-            <h1>About:Blank</h1>
+        <div class="settings-card">
+            <h1 class="white">About:Blank</h1>
+            <p>Cloak the tab to be About:Blank so it doesnt show up in your history.</p>
             <button id="openGame" class="openGame" onclick="openGame()">Open in About:Blank</button></center>
 <script>
 function openGame() {
@@ -205,8 +193,11 @@ function openGame() {
 }
 </script>
 
-          </body>
         </div>
+        <div class="settings-card">
+    <h1 class="white">Information</h1>
+<p>Version 1</p>
+ <p class="white">This is work In Progress. To suggest stuff to add go to the <a href="/contact.html">contact page.</a></p>
+  </div>
     </div>    
-    <center><h3>Suggest stuff to add in the contact page</h3></center>
 </body>
