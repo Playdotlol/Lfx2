@@ -145,18 +145,26 @@
 
 <body>
 <center><h1><strong>Android</strong></h1></center>
-  <center><button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button></center>
-  <script>
-  function goFullscreen(id) {
-      var element = document.getElementById(id);
-      if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullScreen) {
-        element.webkitRequestFullScreen();
-      }
-      console.log("Fullscreened")
-  }
-  </script>
+<script src="/reloadEmbed.js"></script>
+<script src="/back.js"></script>
+<script src="/forward.js"></script>
+
+<script>
+    function goFullscreen(id) {
+        var element = document.getElementById(id);
+        if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen();
+        }
+        console.log("fullscreened")
+    }
+</script>
+    <center><button class="ReloadButton" id="ReloadButton" onclick="reloadEmbed('embededGame'); return true">Reload</button>
+    <button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button>
+    <button class="BackButton" id="BackButton" onclick="goBack('embededGame')">Go Back</button>
+
+    <button class="ForwardButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button></center>
 <container>
 <center><iframe id="embededGame" src="https://zeelix.web.app/static/ZLX/hvtrs8%2F-nmw%2Cge%2Fcprs-ulcwbg%2F5054-nmw%2Chvmn"     
       frameborder= 0
