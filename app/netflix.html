@@ -144,18 +144,26 @@
 
 <body>
 <center><h1><strong>Netflix</strong></h1></center>
-<center><button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button></center>
+<script src="/reloadEmbed.js"></script>
+<script src="/back.js"></script>
+<script src="/forward.js"></script>
+
 <script>
-function goFullscreen(id) {
-    var element = document.getElementById(id);
-    if (element.mozRequestFullScreen) {
-      element.mozRequestFullScreen();
-    } else if (element.webkitRequestFullScreen) {
-      element.webkitRequestFullScreen();
+    function goFullscreen(id) {
+        var element = document.getElementById(id);
+        if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen();
+        }
+        console.log("fullscreened")
     }
-    console.log("Fullscreened")
-}
 </script>
+    <center><button class="ReloadButton" id="ReloadButton" onclick="reloadEmbed('embededGame'); return true">Reload</button>
+    <button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button>
+    <button class="BackButton" id="BackButton" onclick="goBack('embededGame')">Go Back</button>
+
+    <button class="ForwardButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button></center>
 <container>
 <center><iframe id="embededGame" src="https://zeelix.web.app/static/embed.html#https://netflix.com"     
       frameborder= 0
