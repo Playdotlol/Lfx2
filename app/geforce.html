@@ -143,19 +143,27 @@
 </head> 
 
 <body>
-<center><h1><strong>Android</strong></h1></center>
-  <center><button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button></center>
-  <script>
-  function goFullscreen(id) {
-      var element = document.getElementById(id);
-      if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullScreen) {
-        element.webkitRequestFullScreen();
-      }
-      console.log("Fullscreened")
-  }
-  </script>
+<center><h1><strong>Geforce Now</strong></h1></center>
+<script src="/reloadEmbed.js"></script>
+<script src="/back.js"></script>
+<script src="/forward.js"></script>
+
+<script>
+    function goFullscreen(id) {
+        var element = document.getElementById(id);
+        if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen();
+        }
+        console.log("fullscreened")
+    }
+</script>
+    <center><button class="ReloadButton" id="ReloadButton" onclick="reloadEmbed('embededGame'); return true">Reload</button>
+    <button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button>
+    <button class="BackButton" id="BackButton" onclick="goBack('embededGame')">Go Back</button>
+
+    <button class="ForwardButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button></center>
 <container>
 <center> <iframe height="100%" width="100%" id="embededGame" sandbox="allow-scripts allow-pointer-lock allow-forms allow-same-origin allow-downloads" allowfullscreen="true" src="https://zeelix.web.app//static/embed.html#https://play.geforcenow.com/mall/" frameborder="0"></iframe></center></container>
 
