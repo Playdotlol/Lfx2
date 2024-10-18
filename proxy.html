@@ -33,6 +33,8 @@
                 var cons = $(".console").jsConsole({worker: getWorker()});
                 cons.info("Type javascript here!");
             } else {
+                text = document.getElementById("console")
+                text.innerText = "Error loading console"
                 console.error("jsConsole is not a function. Please check if the jsConsole library is loaded correctly.");
             }
         });
