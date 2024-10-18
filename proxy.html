@@ -11,12 +11,12 @@
   <script src="/tabcloakername.js"></script>
   <script>Help1()</script>
     <link rel="stylesheet" type="text/css" href="/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js"></script>
     <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/console.js"></script>
     <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js"></script>
     <link rel="stylesheet" href="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/console.css" type="text/css" />
-    
+
     <style>
         .console {
             width: 100%;
@@ -24,12 +24,10 @@
             margin: 0px;
         }
     </style>
-</head>
 
     <script>
-        var workerURL = "https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js";
-        
         $(document).ready(function() {
+            // Check if jsConsole is loaded
             if (typeof $.fn.jsConsole === "function") {
                 var cons = $(".console").jsConsole({worker: getWorker()});
                 cons.info("Type javascript here!");
@@ -37,10 +35,10 @@
                 console.error("jsConsole is not a function. Please check if the jsConsole library is loaded correctly.");
             }
         });
-        
+
         function getWorker() {
             var req = new XMLHttpRequest();
-            req.open("GET", workerURL, false);
+            req.open("GET", "https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js", false);
             req.send();
             var blob;
             try {
