@@ -25,71 +25,75 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+        }
 
-      .navbar {
-        overflow: hidden;
-        background-color: #333;
-      }
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
 
-      .navbar a {
-        float: left;
-        font-size: 16px;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
 
-      .dropdown {
-        float: left;
-        overflow: hidden;
-      }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
 
-      .dropdown .dropbtn {
-        font-size: 16px;
-        border: none;
-        outline: none;
-        color: white;
-        padding: 14px 16px;
-        background-color: inherit;
-        font-family: inherit;
-        margin: 0;
-      }
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
 
-      .navbar a:hover,
-      .dropdown:hover .dropbtn {
-        background-color: red;
-      }
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: red;
+        }
 
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-      }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
 
-      .dropdown-content a {
-        float: none;
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-      }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
 
-      .dropdown-content a:hover {
-        background-color: #ddd;
-      }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
 
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-                .responsive {
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .responsive {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
@@ -98,6 +102,25 @@
 
         .gallery {
             margin: 10px;
+        }
+
+        .content {
+            margin-left: 20px; /* Space between the cards and the content */
+            flex: 1; /* Flex-grow to take available space */
+        }
+
+        .container {
+            display: flex; /* Use flexbox to align cards and content */
+            justify-content: center; /* Center the items */
+            align-items: flex-start; /* Align items to the start */
+        }
+
+        .typing_desc {
+            font-size: 18px;
+        }
+
+        h1 {
+            margin: 0; /* Remove default margin for h1 */
         }
     </style>
   </head>
@@ -163,38 +186,30 @@
   </script>
 <center><bold><strong><h1 id="splash"></h1></strong></bold></center>
 
-<center><div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="/page/bloxro.html">
-      <img src="images/roblox.png" width="600" height="400">
-    </a>
-  </div>
-</div>
-
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="/page/1v1lol.html">
-      <img src="images/1v1lol.png" width="600" height="400">
-    </a>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="/page/nitefort.html">
-      <img src="images/fortnite.png" width="600" height="400">
-    </a>
-  </div>
-</div>
-
-<div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="/page/dogmine.html">
-      <img src="images/dogeminer.png" width="600" height="400">
-    </a>
-  </div>
-</div>
+    <div class="container">
+        <div class="responsive">
+            <div class="gallery">
+                <a target="_blank" href="/page/bloxro.html">
+                    <img src="images/roblox.png" width="600" height="400" alt="Roblox">
+                </a>
+            </div>
+            <div class="gallery">
+                <a target="_blank" href="/page/1v1lol.html">
+                    <img src="images/1v1lol.png" width="600" height="400" alt="1v1.lol">
+                </a>
+            </div>
+            <div class="gallery">
+                <a target="_blank" href="/page/nitefort.html">
+                    <img src="images/fortnite.png" width="600" height="400" alt="Fortnite">
+                </a>
+            </div>
+            <div class="gallery">
+                <a target="_blank" href="/page/dogmine.html">
+                    <img src="images/dogeminer.png" width="600" height="400" alt="Doge Miner">
+                </a>
+            </div>
+        </div>
+        
   <script>console.log("Successfully Loaded")</script>
 <script>
   fetch('splash.json')
