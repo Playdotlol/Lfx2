@@ -214,7 +214,19 @@
 height= "500px"
 width= "750px"
 ></iframe>
+    
         <div id="console">Loading console...</div>
+    <center><button class="ReloadButton" id="ReloadButton" onclick="reloadEmbed('embededProxy'); return true">Reload</button>
+    <button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededProxy'); return true">Fullscreen</button>
+    <button class="BackButton" id="BackButton" onclick="goBack('embededGame')">Go Back</button>
+
+    <button class="ForwardButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button></center>
+<iframe name="embededGame" id="embededProxy" src="https://interstellar-two-beta.vercel.app/rx"
+height= "500px"
+width= "750px"
+></iframe>
+    
+        <div id="console2">Loading console...</div>
 </container></center>
 </body>
 </html>
