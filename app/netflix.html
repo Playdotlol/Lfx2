@@ -107,12 +107,14 @@
         <div class="dropdown-content">
 
           <a href="/page/1v1lol.html">1v1.lol</a>
-          <a href="/page/nitefort.html">Fortnite</a>
+          <a href="/app/geforce.html">Fortnite</a>
           <a href="/page/bloxro.html">Roblox</a>
           <a href="/page/dogmine.html">Doge Miner</a>
           <a href="/page/shotpixel.html">Pixel Shooter</a>
           <a href="/page/snowrider.html">Snow Rider</a>
+          <a href="/page/googlehiphop.html">Google Hip Hop</a>
           <a href="/page/taggame.html">Tag Game</a>
+
         </div>
       </div>
     </div>
@@ -144,20 +146,28 @@
 
 <body>
 <center><h1><strong>Netflix</strong></h1></center>
-<center><button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button></center>
+<script src="/reloadEmbed.js"></script>
+<script src="/back.js"></script>
+<script src="/forward.js"></script>
+
 <script>
-function goFullscreen(id) {
-    var element = document.getElementById(id);
-    if (element.mozRequestFullScreen) {
-      element.mozRequestFullScreen();
-    } else if (element.webkitRequestFullScreen) {
-      element.webkitRequestFullScreen();
+    function goFullscreen(id) {
+        var element = document.getElementById(id);
+        if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen();
+        }
+        console.log("fullscreened")
     }
-    console.log("Fullscreened")
-}
 </script>
+    <center><button class="ReloadButton" id="ReloadButton" onclick="reloadEmbed('embededGame'); return true">Reload</button>
+    <button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button>
+    <button class="BackButton" id="BackButton" onclick="goBack('embededGame')">Go Back</button>
+
+    <button class="ForwardButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button></center>
 <container>
-<center><iframe id="embededGame" src="https://4163fbf8-3ba6-47de-947e-64a5b8ff6300-00-39hpn8qt7tmzh.picard.replit.dev/service/hvtrs8%2F-wuw%2Cngtdlkx%2Ccmm-"     
+<center><iframe id="embededGame" src="https://zeelix.web.app/static/embed.html#https://netflix.com"     
       frameborder= 0
       height= "500px"
       width= "750px"
