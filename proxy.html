@@ -202,7 +202,7 @@
     if (!devToolsLoaded) {
       if (!eruda) {
         var erudaScript = document.createElement('script');
-        erudaScript.src = "//cdn.jsdelivr.net/npm/eruda";
+        erudaScript.src = "https://cdn.jsdelivr.net/npm/eruda";
         erudaScript.onload = function() {
           var initScript = document.createElement('script');
           initScript.innerHTML = "eruda.init();eruda.show();";
@@ -259,6 +259,7 @@
 
         <!-- Add console element -->
         <div id="console"></div>
+        <button onclick="devTools()">Console</button>
     </center>
 
     <!-- Add event listeners to buttons -->
