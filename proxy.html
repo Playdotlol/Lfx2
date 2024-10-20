@@ -31,10 +31,12 @@
         }
         .console {
             width: 100%;
-            height: 100%;
-            margin: 0;
+            height: 100px; /* Adjust height as needed */
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
         }
-        /* Add other CSS styles as necessary */
     </style>
     <script>
         function eToggle() {
@@ -153,6 +155,9 @@
             <iframe name="embededGame" id="embededGame" src="/proxyiframe.html" height="500px" width="750px"></iframe>
             <iframe name="embededProxy" id="embededProxy" src="https://interstellar-two-beta.vercel.app/rx" height="500px" width="750px"></iframe>
         </div>
+        
+        <!-- Add console element -->
+        <div id="console" class="console"></div>
     </center>
 </body>
 </html>
