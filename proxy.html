@@ -144,9 +144,8 @@
         }
 
         $(document).ready(function() {
-            // Check if jsConsole is loaded
             if (typeof $.fn.jsConsole === "function") {
-                var cons = $(".console").jsConsole({worker: getWorker()});
+                const cons = $(".console").jsConsole({worker: getWorker()});
                 cons.info("Type javascript here!");
             } else {
                 const text = document.getElementById("console");
@@ -162,11 +161,11 @@
         });
 
         function getWorker() {
-            var req = new XMLHttpRequest();
+            const req = new XMLHttpRequest();
             req.open("GET", "https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js", false);
             req.send();
             
-            var blob;
+            let blob;
             
             try {
                 blob = new Blob([req.responseText], {type: 'application/javascript'});
@@ -181,46 +180,48 @@
         }
 
         function goFullscreen(id) {
-            var element = document.getElementById(id);
+            const element = document.getElementById(id);
             
             if (element) {
                 if (element.mozRequestFullScreen) {
                     element.mozRequestFullScreen();
                 } else if (element.webkitRequestFullScreen) {
                     element.webkitRequestFullScreen();
+                } else if (element.requestFullscreen) {
+                    element.requestFullscreen(); // Standard method
                 }
                 
                 console.log("fullscreened");
             }
         }
-        let devToolsLoaded;
+
+        let devToolsLoaded = false;
+
         function devTools() {
-  var siteIframe = document.getElementById('siteurl');
-  if (siteIframe) {
-    var innerDoc = siteIframe.contentDocument || siteIframe.contentWindow.document;
-    var eruda = innerDoc.getElementById('eruda');
-    if (!devToolsLoaded) {
-      if (!eruda) {
-        var erudaScript = document.createElement('script');
-        erudaScript.src = "https://cdn.jsdelivr.net/npm/eruda";
-        erudaScript.onload = function() {
-          var initScript = document.createElement('script');
-          initScript.innerHTML = "eruda.init();eruda.show();";
-          innerDoc.head.appendChild(initScript);
-        };
-        innerDoc.head.appendChild(erudaScript);
-      }
-    }
-    else {
-      if (eruda) {
-        eruda.remove();
-      }
-    }
-    devToolsLoaded = !devToolsLoaded;
-  }
-}
+            const siteIframe = document.getElementById('embededGame'); // Assuming you want to toggle on the game iframe
+            if (siteIframe) {
+                const innerDoc = siteIframe.contentDocument || siteIframe.contentWindow.document;
+                const eruda = innerDoc.getElementById('eruda');
+                if (!devToolsLoaded) {
+                    if (!eruda) {
+                        const erudaScript = document.createElement('script');
+                        erudaScript.src = "https://cdn.jsdelivr.net/npm/eruda";
+                        erudaScript.onload = function() {
+                            const initScript = document.createElement('script');
+                            initScript.innerHTML = "eruda.init();eruda.show();";
+                            innerDoc.head.appendChild(initScript);
+                        };
+                        innerDoc.head.appendChild(erudaScript);
+                    }
+                } else {
+                    if (eruda) {
+                        eruda.remove();
+                    }
+                }
+                devToolsLoaded = !devToolsLoaded; // Toggle the state
+            }
+        }
     </script>
-        <script>devTools()</script>
 </head>
 <body>
     <div class="navbar">
