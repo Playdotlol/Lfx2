@@ -92,6 +92,8 @@
                 document.getElementById(selectedProxy).contentWindow.history.back();
             } else if (action === "Go Forward") {
                 document.getElementById(selectedProxy).contentWindow.history.forward();
+            } else if (action === "Console") {
+                devTools(selectedProxy)
             } else {
                 console.error("Unknown action:", action);
             }
@@ -197,8 +199,8 @@
 
         let devToolsLoaded = false;
 
-        function devTools() {
-            const siteIframe = document.getElementById('embededGame'); // Assuming you want to toggle on the game iframe
+        function devTools(embed) {
+            const siteIframe = document.getElementById(embed); // Assuming you want to toggle on the game iframe
             if (siteIframe) {
                 const innerDoc = siteIframe.contentDocument || siteIframe.contentWindow.document;
                 const eruda = innerDoc.getElementById('eruda');
@@ -259,8 +261,7 @@
         </div>
 
         <!-- Add console element -->
-        <div id="console"></div>
-        <button onclick="devTools()">Console</button>
+        <button onclick="promptForProxy(Console)">Console</button>
     </center>
 
     <!-- Add event listeners to buttons -->
