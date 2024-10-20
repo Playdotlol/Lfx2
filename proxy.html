@@ -78,33 +78,22 @@
         display: block;
       }
     </style>
-       <script>
-        const proxies = ["embededGame", "embededProxy"]; // Define your iframe options here
-
-        function showProxySelection(action) {
-            document.getElementById("action").innerText = action; // Set the action text
-            const modal = document.getElementById("proxyModal");
-            modal.style.display = "block"; // Show the modal
-        }
-
-        function performActionOnProxy() {
-            const selectedProxy = document.querySelector('input[name="proxy"]:checked');
-            if (selectedProxy) {
-                const proxyId = selectedProxy.value;
-                alert(`Performing action on ${proxyId}.`); // Replace this with the actual action
-                // Here you can call the relevant function for the selected proxy
-                const action = document.getElementById("action").innerText;
-                console.log(`Action: ${action} on ${proxyId}`);
-                // Perform the actions related to the selected proxy here
+    <script>
+        function promptForProxy(action) {
+            const userInput = prompt(`Select a proxy to ${action}:\nEnter '1' for Embed Game\nEnter '2' for Embed Proxy`);
+            let selectedProxy;
+            if (userInput === '1') {
+                selectedProxy = "embededGame";
+            } else if (userInput === '2') {
+                selectedProxy = "embededProxy";
             } else {
-                alert("Please select a proxy.");
+                alert("Invalid selection. Please enter '1' or '2'.");
+                return; // Exit if invalid
             }
-            closeModal();
-        }
-
-        function closeModal() {
-            const modal = document.getElementById("proxyModal");
-            modal.style.display = "none"; // Hide the modal
+            // Perform action based on the selected proxy
+            alert(`You selected ${selectedProxy} to ${action}.`); // Replace this with the actual function to perform the action
+            console.log(`Action: ${action} on ${selectedProxy}`);
+            // Here you can call the actual function to perform the action with the selected proxy
         }
 
         function eToggle() {
