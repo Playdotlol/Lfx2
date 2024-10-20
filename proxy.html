@@ -78,42 +78,37 @@
         display: block;
       }
     </style>
-    <script>
-        function eToggle() {
-            const activeIframe = document.querySelector("#frame-container iframe.active");
-            if (!activeIframe) {
-                console.error("No active iframe found");
-                return;
-            }
-            const erudaWindow = activeIframe.contentWindow;
-            if (!erudaWindow) {
-                console.error("No content window found for the active iframe");
-                return;
-            }
-            if (erudaWindow.eruda) {
-                if (erudaWindow.eruda._isInit) {
-                    erudaWindow.eruda.destroy();
-                } else {
-                    console.error("Eruda is not initialized in the active iframe");
-                }
+       <script>
+        const proxies = ["embededGame", "embededProxy"]; // Define your iframe options here
+
+        function showProxySelection(action) {
+            document.getElementById("action").innerText = action; // Set the action text
+            const modal = document.getElementById("proxyModal");
+            modal.style.display = "block"; // Show the modal
+        }
+
+        function performActionOnProxy() {
+            const selectedProxy = document.querySelector('input[name="proxy"]:checked');
+            if (selectedProxy) {
+                const proxyId = selectedProxy.value;
+                alert(`Performing action on ${proxyId}.`); // Replace this with the actual action
+                // Here you can call the relevant function for the selected proxy
+                const action = document.getElementById("action").innerText;
+                console.log(`Action: ${action} on ${proxyId}`);
+                // Perform the actions related to the selected proxy here
             } else {
-                const erudaDocument = activeIframe.contentDocument;
-                if (!erudaDocument) {
-                    console.error("No content document found for the active iframe");
-                    return;
-                }
-                const script = erudaDocument.createElement("script");
-                script.src = "https://cdn.jsdelivr.net/npm/eruda";
-                script.onload = () => {
-                    if (!erudaWindow.eruda) {
-                        console.error("Failed to load Eruda in the active iframe");
-                        return;
-                    }
-                    erudaWindow.eruda.init();
-                    erudaWindow.eruda.show();
-                };
-                erudaDocument.head.appendChild(script);
+                alert("Please select a proxy.");
             }
+            closeModal();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("proxyModal");
+            modal.style.display = "none"; // Hide the modal
+        }
+
+        function eToggle() {
+            // ... existing eToggle function ...
         }
 
         $(document).ready(function() {
@@ -133,19 +128,7 @@
         });
 
         function getWorker() {
-            var req = new XMLHttpRequest();
-            req.open("GET", "https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js", false);
-            req.send();
-            var blob;
-            try {
-                blob = new Blob([req.responseText], {type: 'application/javascript'});
-            } catch (e) {
-                window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
-                blob = new BlobBuilder();
-                blob.append(req.responseText);
-                blob = blob.getBlob();
-            }
-            return URL.createObjectURL(blob);
+            // ... existing getWorker function ...
         }
 
         function goFullscreen(id) {
@@ -186,10 +169,10 @@
 
     <center>
         <h1><strong>Proxy</strong></h1>
-        <button class="ReloadButton" id="ReloadButton" onclick="reloadEmbed('embededGame'); return true">Reload</button>
-        <button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button>
-        <button class="BackButton" id="BackButton" onclick="goBack('embededGame')">Go Back</button>
-        <button class="ForwardButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button>
+        <button class="ReloadButton" id="ReloadButton" onclick="showProxySelection('Reload'); return true">Reload</button>
+        <button class="FullscreenButton" id="FullscreenButton" onclick="showProxySelection('Go Fullscreen'); return true">Fullscreen</button>
+        <button class="BackButton" id="BackButton" onclick="showProxySelection('Go Back'); return true">Go Back</button>
+        <button class="ForwardButton" id="ForwardButton" onclick="showProxySelection('Go Forward'); return true">Go Forward</button>
         
         <div>
             <iframe name="embededGame" id="embededGame" src="/proxyiframe.html" height="500px" width="750px"></iframe>
@@ -199,5 +182,20 @@
         <!-- Add console element -->
         <div id="console" class="console"></div>
     </center>
+
+    <!-- Modal for proxy selection -->
+    <div id="proxyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="action"></h2>
+            <form>
+                <input type="radio" name="proxy" value="embededGame" id="proxy1">
+                <label for="proxy1">Embeded Game</label><br>
+                <input type="radio" name="proxy" value="embededProxy" id="proxy2">
+                <label for="proxy2">Embeded Proxy</label><br>
+                <button type="button" onclick="performActionOnProxy()">Confirm</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
