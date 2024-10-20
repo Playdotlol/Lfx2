@@ -220,18 +220,37 @@
 
     <center>
         <h1><strong>Proxy</strong></h1>
-        <button class="ReloadButton" id="ReloadButton" onclick="promptForProxy('Reload'); return true">Reload</button>
-        <button class="FullscreenButton" id="FullscreenButton" onclick="promptForProxy('Go Fullscreen'); return true">Fullscreen</button>
-        <button class="BackButton" id="BackButton" onclick="promptForProxy('Go Back'); return true">Go Back</button>
-        <button class="ForwardButton" id="ForwardButton" onclick="promptForProxy('Go Forward'); return true">Go Forward</button>
+        <button class="ReloadButton" id="ReloadButton">Reload</button>
+        <button class="FullscreenButton" id="FullscreenButton">Fullscreen</button>
+        <button class="BackButton" id="BackButton">Go Back</button>
+        <button class="ForwardButton" id="ForwardButton">Go Forward</button>
 
         <div>
             <iframe name="embededGame" id="embededGame" src="/proxyiframe.html" height="500px" width="750px"></iframe>
-            <iframe name="embededProxy" id="embededProxy" src="https://interstellar-two-beta.vercel.app/rx" height="500px" width="750px"></iframe>
+            <iframe name="embededProxy" id="embededProxy" src="" height="500px" width="750px"></iframe>
         </div>
 
         <!-- Add console element -->
-        <div id="console" class="console"></div>
+        <div id="console"></div>
     </center>
+
+    <!-- Add event listeners to buttons -->
+    <script>
+        document.getElementById("ReloadButton").addEventListener("click", function() {
+            promptForProxy('Reload');
+        });
+
+        document.getElementById("FullscreenButton").addEventListener("click", function() {
+            promptForProxy('Go Fullscreen');
+        });
+
+        document.getElementById("BackButton").addEventListener("click", function() {
+            promptForProxy('Go Back');
+        });
+
+        document.getElementById("ForwardButton").addEventListener("click", function() {
+            promptForProxy('Go Forward');
+        });
+    </script>
 </body>
 </html>
