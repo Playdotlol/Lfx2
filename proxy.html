@@ -17,7 +17,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js"></script>
     <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/console.js"></script>
     <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js"></script>
-
+    <script>function eToggle() {
+  const activeIframe = document.querySelector("#frame-container iframe.active");
+  if (!activeIframe) {
+    console.error("No active iframe found");
+    return;
+  }
+  const erudaWindow = activeIframe.contentWindow;
+  if (!erudaWindow) {
+    console.error("No content window found for the active iframe");
+    return;
+  }
+  if (erudaWindow.eruda) {
+    if (erudaWindow.eruda._isInit) {
+      erudaWindow.eruda.destroy();
+    } else {
+      console.error("Eruda is not initialized in the active iframe");
+    }
+  } else {
+    const erudaDocument = activeIframe.contentDocument;
+    if (!erudaDocument) {
+      console.error("No content document found for the active iframe");
+      return;
+    }
+    const script = erudaDocument.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/eruda";
+    script.onload = () => {
+      if (!erudaWindow.eruda) {
+        console.error("Failed to load Eruda in the active iframe");
+        return;
+      }
+      erudaWindow.eruda.init();
+      erudaWindow.eruda.show();
+    };
+    erudaDocument.head.appendChild(script);
+  }
+} eToggle()</script>
     <style>
         .console {
             width: 100%;
