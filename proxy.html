@@ -133,6 +133,101 @@
         }
     </script>
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clever</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/clever.jpg"/>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js"></script>
+    <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/console.js"></script>
+    <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .navbar a, .dropbtn {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .console {
+            width: 100%;
+            height: 100px; /* Adjust height as needed */
+            border: 1px solid #ccc;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+    <script>
+        function promptForProxy(action) {
+            const userInput = prompt(`Select a proxy to ${action}:\nEnter '1' for Embed Game\nEnter '2' for Embed Proxy`);
+            let selectedProxy;
+            if (userInput === '1') {
+                selectedProxy = "embededGame";
+            } else if (userInput === '2') {
+                selectedProxy = "embededProxy";
+            } else {
+                alert("Invalid selection. Please enter '1' or '2'.");
+                return; // Exit if invalid
+            }
+            // Perform action based on the selected proxy
+            alert(`You selected ${selectedProxy} to ${action}.`); // Replace this with the actual function to perform the action
+            console.log(`Action: ${action} on ${selectedProxy}`);
+            // Here you can call the actual function to perform the action with the selected proxy
+        }
+
+        function eToggle() {
+            // ... existing eToggle function ...
+        }
+
+        $(document).ready(function() {
+            // Check if jsConsole is loaded
+            if (typeof $.fn.jsConsole === "function") {
+                var cons = $(".console").jsConsole({worker: getWorker()});
+                cons.info("Type javascript here!");
+            } else {
+                const text = document.getElementById("console");
+                if (text) {
+                    text.innerText = "Error loading console";
+                } else {
+                    console.error("Console element not found");
+                }
+                console.error("jsConsole is not a function. Please check if the jsConsole library is loaded correctly.");
+            }
+        });
+
+        function getWorker() {
+            // ... existing getWorker function ...
+        }
+
+        function goFullscreen(id) {
+            var element = document.getElementById(id);
+            if (element) {
+                if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullScreen) {
+                    element.webkitRequestFullScreen();
+                }
+                console.log("fullscreened");
+            }
+        }
+    </script>
+</head>
 <body>
     <div class="navbar">   
         <a href="/">Home</a>
@@ -158,10 +253,10 @@
 
     <center>
         <h1><strong>Proxy</strong></h1>
-        <button class="ReloadButton" id="ReloadButton" onclick="showProxySelection('Reload'); return true">Reload</button>
-        <button class="FullscreenButton" id="FullscreenButton" onclick="showProxySelection('Go Fullscreen'); return true">Fullscreen</button>
-        <button class="BackButton" id="BackButton" onclick="showProxySelection('Go Back'); return true">Go Back</button>
-        <button class="ForwardButton" id="ForwardButton" onclick="showProxySelection('Go Forward'); return true">Go Forward</button>
+        <button class="ReloadButton" id="ReloadButton" onclick="promptForProxy('Reload'); return true">Reload</button>
+        <button class="FullscreenButton" id="FullscreenButton" onclick="promptForProxy('Go Fullscreen'); return true">Fullscreen</button>
+        <button class="BackButton" id="BackButton" onclick="promptForProxy('Go Back'); return true">Go Back</button>
+        <button class="ForwardButton" id="ForwardButton" onclick="promptForProxy('Go Forward'); return true">Go Forward</button>
         
         <div>
             <iframe name="embededGame" id="embededGame" src="/proxyiframe.html" height="500px" width="750px"></iframe>
@@ -171,20 +266,5 @@
         <!-- Add console element -->
         <div id="console" class="console"></div>
     </center>
-
-    <!-- Modal for proxy selection -->
-    <div id="proxyModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="action"></h2>
-            <form>
-                <input type="radio" name="proxy" value="embededGame" id="proxy1">
-                <label for="proxy1">Embeded Game</label><br>
-                <input type="radio" name="proxy" value="embededProxy" id="proxy2">
-                <label for="proxy2">Embeded Proxy</label><br>
-                <button type="button" onclick="performActionOnProxy()">Confirm</button>
-            </form>
-        </div>
-    </div>
 </body>
 </html>
