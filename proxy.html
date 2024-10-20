@@ -1,146 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clever</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/images/clever.jpg"/>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js"></script>
-    <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/console.js"></script>
-    <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js"></script>
-       <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
 
-      .navbar {
-        overflow: hidden;
-        background-color: #333;
-      }
-
-      .navbar a {
-        float: left;
-        font-size: 16px;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-
-      .dropdown {
-        float: left;
-        overflow: hidden;
-      }
-
-      .dropdown .dropbtn {
-        font-size: 16px;
-        border: none;
-        outline: none;
-        color: white;
-        padding: 14px 16px;
-        background-color: inherit;
-        font-family: inherit;
-        margin: 0;
-      }
-
-      .navbar a:hover,
-      .dropdown:hover .dropbtn {
-        background-color: red;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-      }
-
-      .dropdown-content a {
-        float: none;
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-      }
-
-      .dropdown-content a:hover {
-        background-color: #ddd;
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-    </style>
-    <script>
-function promptForProxy(action) {
-    const userInput = prompt(`Select a proxy to ${action}:\nEnter '1' for Embed Game\nEnter '2' for Embed Proxy`);
-    let selectedProxy;
-    if (userInput === '1') {
-        selectedProxy = "embededGame";
-    } else if (userInput === '2') {
-        selectedProxy = "embededProxy";
-    } else {
-        alert("Invalid selection. Please enter '1' or '2'.");
-        return; // Exit if invalid
-    }
-    
-    if (action === "Go Fullscreen") {
-        goFullscreen(selectedProxy);
-    } else if (action === "Reload") {
-        document.getElementById(selectedProxy).contentWindow.location.reload();
-    } else if (action === "Go Back") {
-        document.getElementById(selectedProxy).contentWindow.history.back();
-    } else if (action === "Go Forward") {
-        document.getElementById(selectedProxy).contentWindow.history.forward();
-    } else {
-        console.error("Unknown action:", action);
-    }
-}
-
-
-       function eToggle() {
-            const activeIframe = document.querySelector("#frame-container iframe.active");
-            if (!activeIframe) {
-                console.error("No active iframe found");
-                return;
-            }
-            const erudaWindow = activeIframe.contentWindow;
-            if (!erudaWindow) {
-                console.error("No content window found for the active iframe");
-                return;
-            }
-            if (erudaWindow.eruda) {
-                if (erudaWindow.eruda._isInit) {
-                    erudaWindow.eruda.destroy();
-                } else {
-                    console.error("Eruda is not initialized in the active iframe");
-                }
-            } else {
-                const erudaDocument = activeIframe.contentDocument;
                 if (!erudaDocument) {
                     console.error("No content document found for the active iframe");
                     return;
                 }
+                
                 const script = erudaDocument.createElement("script");
                 script.src = "https://cdn.jsdelivr.net/npm/eruda";
+                
                 script.onload = () => {
                     if (!erudaWindow.eruda) {
                         console.error("Failed to load Eruda in the active iframe");
                         return;
                     }
+                    
                     erudaWindow.eruda.init();
                     erudaWindow.eruda.show();
                 };
+                
                 erudaDocument.head.appendChild(script);
             }
         }
+
         $(document).ready(function() {
             // Check if jsConsole is loaded
             if (typeof $.fn.jsConsole === "function") {
@@ -148,11 +28,13 @@ function promptForProxy(action) {
                 cons.info("Type javascript here!");
             } else {
                 const text = document.getElementById("console");
+                
                 if (text) {
                     text.innerText = "Error loading console";
                 } else {
                     console.error("Console element not found");
                 }
+                
                 console.error("jsConsole is not a function. Please check if the jsConsole library is loaded correctly.");
             }
         });
@@ -161,7 +43,9 @@ function promptForProxy(action) {
             var req = new XMLHttpRequest();
             req.open("GET", "https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js", false);
             req.send();
+            
             var blob;
+            
             try {
                 blob = new Blob([req.responseText], {type: 'application/javascript'});
             } catch (e) {
@@ -170,25 +54,27 @@ function promptForProxy(action) {
                 blob.append(req.responseText);
                 blob = blob.getBlob();
             }
+            
             return URL.createObjectURL(blob);
         }
 
-
         function goFullscreen(id) {
             var element = document.getElementById(id);
+            
             if (element) {
                 if (element.mozRequestFullScreen) {
                     element.mozRequestFullScreen();
                 } else if (element.webkitRequestFullScreen) {
                     element.webkitRequestFullScreen();
                 }
+                
                 console.log("fullscreened");
             }
         }
     </script>
 </head>
 <body>
-    <div class="navbar">   
+    <div class="navbar">
         <a href="/">Home</a>
         <a href="/proxy.html">Proxy</a>
         <a href="/contact.html">Contact</a>
@@ -216,12 +102,12 @@ function promptForProxy(action) {
         <button class="FullscreenButton" id="FullscreenButton" onclick="promptForProxy('Go Fullscreen'); return true">Fullscreen</button>
         <button class="BackButton" id="BackButton" onclick="promptForProxy('Go Back'); return true">Go Back</button>
         <button class="ForwardButton" id="ForwardButton" onclick="promptForProxy('Go Forward'); return true">Go Forward</button>
-        
+
         <div>
             <iframe name="embededGame" id="embededGame" src="/proxyiframe.html" height="500px" width="750px"></iframe>
             <iframe name="embededProxy" id="embededProxy" src="https://interstellar-two-beta.vercel.app/rx" height="500px" width="750px"></iframe>
         </div>
-        
+
         <!-- Add console element -->
         <div id="console" class="console"></div>
     </center>
