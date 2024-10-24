@@ -5,228 +5,281 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clever</title>
-  <link rel="shortcut icon" type="image/x-icon" href="/images/clever.jpg"/>
-  <script src="/tabcloaker.js"></script>
-  <script>Help()</script>
-  <script src="/tabcloakername.js"></script>
-  <script>Help1()</script>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/clever.jpg"/>
     <link rel="stylesheet" type="text/css" href="/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js"></script>
     <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/console.js"></script>
     <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js"></script>
-
     <style>
-        .console {
-            width: 100%;
-            height: 100%;
-            margin: 0px;
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
     </style>
-
     <script>
+        function promptForProxy(action) {
+            const userInput = prompt("Select a proxy to " + action + ":\nEnter '1' for Embed Game\nEnter '2' for Embed Proxy");
+            
+            let selectedProxy;
+
+            if (userInput === '1') {
+                selectedProxy = "embededGame";
+            } else if (userInput === '2') {
+                selectedProxy = "embededProxy";
+            } else {
+                alert("Invalid selection. Please enter '1' or '2'.");
+                return; // Exit if invalid
+            }
+
+            if (action === "Go Fullscreen") {
+                goFullscreen(selectedProxy);
+            } else if (action === "Reload") {
+                document.getElementById(selectedProxy).contentWindow.location.reload();
+            } else if (action === "Go Back") {
+                document.getElementById(selectedProxy).contentWindow.history.back();
+            } else if (action === "Go Forward") {
+                document.getElementById(selectedProxy).contentWindow.history.forward();
+            } else if (action === "Console") {
+                devTools(selectedProxy)
+            } else {
+                console.error("Unknown action:", action);
+            }
+        }
+
+        function eToggle() {
+            const activeIframe = document.querySelector("#frame-container iframe.active");
+            
+            if (!activeIframe) {
+                console.error("No active iframe found");
+                return;
+            }
+            
+            const erudaWindow = activeIframe.contentWindow;
+            
+            if (!erudaWindow) {
+                console.error("No content window found for the active iframe");
+                return;
+            }
+            
+            if (erudaWindow.eruda) {
+                if (erudaWindow.eruda._isInit) {
+                    erudaWindow.eruda.destroy();
+                } else {
+                    console.error("Eruda is not initialized in the active iframe");
+                }
+            } else {
+                const erudaDocument = activeIframe.contentDocument;
+                
+                if (!erudaDocument) {
+                    console.error("No content document found for the active iframe");
+                    return;
+                }
+                
+                const script = erudaDocument.createElement("script");
+                script.src = "https://cdn.jsdelivr.net/npm/eruda";
+                
+                script.onload = () => {
+                    if (!erudaWindow.eruda) {
+                        console.error("Failed to load Eruda in the active iframe");
+                        return;
+                    }
+                    
+                    erudaWindow.eruda.init();
+                    erudaWindow.eruda.show();
+                };
+                
+                erudaDocument.head.appendChild(script);
+            }
+        }
+
         $(document).ready(function() {
-            // Check if jsConsole is loaded
             if (typeof $.fn.jsConsole === "function") {
-                var cons = $(".console").jsConsole({worker: getWorker()});
+                const cons = $(".console").jsConsole({worker: getWorker()});
                 cons.info("Type javascript here!");
             } else {
-                text = document.getElementById("console")
-                text.innerText = "Error loading console"
+                const text = document.getElementById("console");
+                
+                if (text) {
+                    text.innerText = "Error loading console";
+                } else {
+                    console.error("Console element not found");
+                }
+                
                 console.error("jsConsole is not a function. Please check if the jsConsole library is loaded correctly.");
             }
         });
 
         function getWorker() {
-            var req = new XMLHttpRequest();
+            const req = new XMLHttpRequest();
             req.open("GET", "https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js", false);
             req.send();
-            var blob;
+            
+            let blob;
+            
             try {
                 blob = new Blob([req.responseText], {type: 'application/javascript'});
-            } catch (e) { // Backwards-compatibility
+            } catch (e) {
                 window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
                 blob = new BlobBuilder();
                 blob.append(req.responseText);
                 blob = blob.getBlob();
             }
+            
             return URL.createObjectURL(blob);
+        }
+
+        function goFullscreen(id) {
+            const element = document.getElementById(id);
+            
+            if (element) {
+                if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullScreen) {
+                    element.webkitRequestFullScreen();
+                } else if (element.requestFullscreen) {
+                    element.requestFullscreen(); // Standard method
+                }
+                
+                console.log("fullscreened");
+            }
+        }
+
+        let devToolsLoaded = false;
+
+        function devTools(embed) {
+            const siteIframe = document.getElementById(embed); // Assuming you want to toggle on the game iframe
+            if (siteIframe) {
+                const innerDoc = siteIframe.contentDocument || siteIframe.contentWindow.document;
+                const eruda = innerDoc.getElementById('eruda');
+                if (!devToolsLoaded) {
+                    if (!eruda) {
+                        const erudaScript = document.createElement('script');
+                        erudaScript.src = "https://cdn.jsdelivr.net/npm/eruda";
+                        erudaScript.onload = function() {
+                            const initScript = document.createElement('script');
+                            initScript.innerHTML = "eruda.init();eruda.show();";
+                            innerDoc.head.appendChild(initScript);
+                        };
+                        innerDoc.head.appendChild(erudaScript);
+                    }
+                } else {
+                    if (eruda) {
+                        eruda.remove();
+                    }
+                }
+                devToolsLoaded = !devToolsLoaded; // Toggle the state
+            }
         }
     </script>
 </head>
 <body>
-
-</head>
-<body>
-</style>
-</head>
-<body>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      .navbar {
-        overflow: hidden;
-        background-color: #333;
-      }
-
-      .navbar a {
-        float: left;
-        font-size: 16px;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-
-      .dropdown {
-        float: left;
-        overflow: hidden;
-      }
-
-      .dropdown .dropbtn {
-        font-size: 16px;
-        border: none;
-        outline: none;
-        color: white;
-        padding: 14px 16px;
-        background-color: inherit;
-        font-family: inherit;
-        margin: 0;
-      }
-
-      .navbar a:hover,
-      .dropdown:hover .dropbtn {
-        background-color: red;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-      }
-
-      .dropdown-content a {
-        float: none;
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-      }
-
-      .dropdown-content a:hover {
-        background-color: #ddd;
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-    </style>
-  </head>
-  <body style="background-color: white">
-    <div class="navbar">   
-            <a href="/">Home</a>
-          <a href="/proxy.html">Proxy</a>
-          <a href="/contact.html">Contact</a>
-          <a href="/settings.html">Settings</a>
-          <a href="/category/shooting.html">Shooting</a>
-          <a href="/category/apps.html">Apps</a>
-          <div class="dropdown">
-            <button class="dropbtn">
-              Popular Games
-              <i class="fa fa-caret-down"></i>
-            </button>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/proxy.html">Proxy</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/settings.html">Settings</a>
+        <a href="/category/shooting.html">Shooting</a>
+        <a href="/category/apps.html">Apps</a>
+        <div class="dropdown">
+            <button class="dropbtn">Popular Games <i class="fa fa-caret-down"></i></button>
             <div class="dropdown-content">
-
-              <a href="/page/1v1lol.html">1v1.lol</a>
-              <a href="/page/nitefort.html">Fortnite</a>
-              <a href="/page/bloxro.html">Roblox</a>
-              <a href="/page/dogmine.html">Doge Miner</a>
-              <a href="/page/shotpixel.html">Pixel Shooter</a>
-              <a href="/page/snowrider.html">Snow Rider</a>
-              <a href="/page/googlehiphop.html">Google Hip Hop</a>
-              <a href="/page/taggame.html">Tag Game</a>
+                <a href="/page/1v1lol.html">1v1.lol</a>
+                <a href="/page/nitefort.html">Fortnite</a>
+                <a href="/page/bloxro.html">Roblox</a>
+                <a href="/page/dogmine.html">Doge Miner</a>
+                <a href="/page/shotpixel.html">Pixel Shooter</a>
+                <a href="/page/snowrider.html">Snow Rider</a>
+                <a href="/page/googlehiphop.html">Google Hip Hop</a>
+                <a href="/page/taggame.html">Tag Game</a>
+            </div>
         </div>
-      </div>
     </div>
 
-</style>
-</head>
-<body>
-  </body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.btn {
-  border: none;
-  background-color: inherit;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
-  display: inline-block;
-}
+    <center>
+        <h1><strong>Proxy</strong></h1>
+        <button class="ReloadButton" id="ConsoleButton" onclick="devTools('embededGame')">Console (Proxy 1 only use the menu for proxy 2)</button>
+        <button class="ReloadButton" id="ReloadButton">Reload</button>
+        <button class="ReloadButton" id="FullscreenButton">Fullscreen</button>
+        <button class="ReloadButton" id="BackButton">Go Back</button>
+        <button class="ReloadButton" id="ForwardButton">Go Forward</button>
 
-.btn:hover {background: #333;}
+        <div>
+            <iframe name="embededGame" id="embededGame" src="/proxyiframe.html" height="500px" width="750px"></iframe>
+            <iframe name="embededProxy" id="embededProxy" src="https://surfdoge.pro/live" height="500px" width="750px"></iframe>
+        </div>
 
-.default {color: white;}
-</style>
-</head> 
+    </center>
 
-<body>
-<script src="reloadEmbed.js"></script>
-<script src="back.js"></script>
-<script src="forward.js"></script>
-<center><h1><strong>Proxy</strong></h1></center>
+    <!-- Add event listeners to buttons -->
+    <script>
+        document.getElementById("ReloadButton").addEventListener("click", function() {
+            promptForProxy('Reload');
+        });
 
-<script>
-    function goFullscreen(id) {
-        var element = document.getElementById(id);
-        if (element.mozRequestFullScreen) {
-          element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullScreen) {
-          element.webkitRequestFullScreen();
-        }
-        console.log("fullscreened")
-    }
-</script>
-    <center><button class="ReloadButton" id="ReloadButton" onclick="reloadEmbed('embededGame'); return true">Reload</button>
-    <button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button>
-    <button class="BackButton" id="BackButton" onclick="goBack('embededGame')">Go Back</button>
+        document.getElementById("FullscreenButton").addEventListener("click", function() {
+            promptForProxy('Go Fullscreen');
+        });
 
-    <button class="ForwardButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button></center>
-<container>
-<center><iframe name="embededGame" id="embededGame" src="/proxyiframe.html"
-height= "500px"
-width= "750px"
-></iframe>
-    
-        <div id="console">Loading console...</div>
-    <center><button class="ReloadButton" id="ReloadButton" onclick="reloadEmbed('embededProxy'); return true">Reload</button>
-    <button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededProxy'); return true">Fullscreen</button>
-    <button class="BackButton" id="BackButton" onclick="goBack('embededGame')">Go Back</button>
+        document.getElementById("BackButton").addEventListener("click", function() {
+            promptForProxy('Go Back');
+        });
 
-    <button class="ForwardButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button></center>
-<iframe name="embededGame" id="embededProxy" src="https://interstellar-two-beta.vercel.app/rx"
-height= "500px"
-width= "750px"
-></iframe>
-    
-        <div id="console2">Loading console...</div>
-</container></center>
+        document.getElementById("ForwardButton").addEventListener("click", function() {
+            promptForProxy('Go Forward');
+        });
+    </script>
 </body>
 </html>
