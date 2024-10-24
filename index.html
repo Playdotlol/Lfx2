@@ -12,10 +12,11 @@
     <script>Help()</script> 
     <script src=https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js></script>     
     <script>Help1()</script>
-    <style>
+      <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
             background-color: white;
+            margin: 0; /* Reset margin */
         }
 
         .navbar {
@@ -79,14 +80,21 @@
             display: block;
         }
 
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* Allow the items to wrap */
+            justify-content: center; /* Centering the cards */
+            padding: 20px; /* Add padding around the container */
+        }
+
         .settings-card {
             background-color: black;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
-            width: 400px;
+            width: 300px; /* Set a fixed width for the card */
             transition: all .3s ease;
-            margin: 10px;
+            margin: 10px; /* Space between cards */
         }
 
         .settings-card img {
@@ -119,6 +127,14 @@
 
         .default {
             color: white;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .settings-card {
+                width: 100%; /* Full width on small screens */
+                max-width: 300px; /* Limit max width */
+            }
         }
     </style>
 </head>
