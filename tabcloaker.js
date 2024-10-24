@@ -21,8 +21,9 @@ function Help() {
 }
 
 function Help1() {
-    var t = localStorage.getItem("TabText");
-
+    var x = localStorage.getItem("TabText");
+    var p = window.location.href
+    
     if (x && x !== "null") {
         document.title = t; // Set title to the value from localStorage
     } else {
