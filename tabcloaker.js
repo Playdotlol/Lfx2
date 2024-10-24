@@ -25,7 +25,7 @@ function Help1() {
     var p = window.location.href
     
     if (x && x !== "null") {
-        document.title = t; // Set title to the value from localStorage
+        document.title = x; // Set title to the value from localStorage
     } else {
         document.title = "Clever | Portal"; // Set default title if TabText doesn't exist or is "null"
     }
