@@ -11,6 +11,131 @@
   <script src="/tabcloakername.js"></script>
   <script>Help1()</script>
     <link rel="stylesheet" href="/style.css">
+     <style>
+    .settings-card p{color:Black; float: center;   font-size: 35px;}a{color:var(--text-primary)}
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+          
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* Allow the items to wrap */
+            justify-content: center; /* Centering the cards */
+            padding: 20px; /* Add padding around the container */
+        }
+
+        .settings-card {
+            background-color: transperant;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+            width: 300px; /* Set a fixed width for the card */
+            transition: all .3s ease;
+            margin: 10px; /* Space between cards */
+        }
+
+        .settings-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .settings-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, .2);
+        }
+
+        .typing_desc {
+            font-size: 18px;
+        }
+
+        .btn {
+            border: none;
+            background-color: inherit;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #333;
+        }
+
+        .default {
+            color: white;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .settings-card {
+                width: 100%; /* Full width on small screens */
+                max-width: 300px; /* Limit max width */
+            }
+        }
+</style>
 </head>
 <body>
 
@@ -142,34 +267,32 @@
 </head>
 <body>
 
-<center><div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="/app/corddis.html">
+<center><div class="container">
+  <div class="settings-card">
+    <a href="/app/corddis.html">
       <img src="/images/discord.jpg" width="600" height="400">
+      <center><p>Discord</p></center>
     </a>
   </div>
-</div></center>
-
-  <center><div class="responsive">
-    <div class="gallery">
-      <a target="_blank" href="/app/netflix.html">
+    
+    <div class="settings-card">
+      <a href="/app/netflix.html">
         <img src="/images/netflix.png" width="600" height="400">
+          <center><p>Netflix</p></center>
       </a>
     </div>
-  </div></center>
 
-  <center><div class="responsive">
-    <div class="gallery">
-      <a target="_blank" href="/app/hulu.html">
+    <div class="settings-card">
+      <a href="/app/hulu.html">
         <img src="/images/hulu.png" width="600" height="400">
+          <center><p>Hulu</p></center>
       </a>
     </div>
-  </div></center>
   
-<center><div class="responsive">
-  <div class="gallery">
-    <a target="_blank" href="/app/tubeyou.html">
+  <div class="settings-card">
+    <a href="/app/tubeyou.html">
       <img src="/images/youtube.jpg" width="600" height="400">
+        <center><p>Youtube</p></center>
     </a>
   </div>
 </div></center></body>
