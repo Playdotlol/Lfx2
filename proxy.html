@@ -195,7 +195,7 @@ height= "500px"
 width= "750px"
 ></iframe>
 </container></center>
-        <style type="text/css">
+    <style type="text/css">
         .context-menu {
             position: absolute;
             text-align: center;
@@ -231,10 +231,11 @@ width= "750px"
     </style>
     <div id="contextMenu" class="context-menu" style="display:none">
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/proxy.html">Proxy</a></li>
-            <li><a onclick="cloakAll()">Cloak Tab</a></li>
+            <li onclick="openSettings('/')"><a>Home</a></li>
+            <li onclick="openSettings('/proxy.html')"><a>Proxy</a></li>
+            <li onclick="cloakAll()"><a>Cloak Tab</a></li>
         </ul>
     </div>
+        <script src="/rightclick.js"></script>
 </body>
 </html>
