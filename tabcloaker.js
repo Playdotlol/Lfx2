@@ -38,3 +38,7 @@ function Help1() {
         document.head.removeChild(existingLink);
     }
 }
+function cloakAll()  {
+    Help1();
+    Help();
+}
