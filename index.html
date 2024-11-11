@@ -165,20 +165,28 @@
     <center>
         <h1>LoungeF2X</h1>
         <h1>
-            <span class="typing_desc" data-typeit-id="8327668">A place to <span class="ti-cursor disabled" style="display: inline; color: rgb(0, 0, 0); font: 700 18px Arial, Helvetica, sans-serif; margin: 0px -4.52083px 0px -0.520833px;">|</span></span>
+            <span class="typing_desc"></span>
         </h1>
     </center>
 
     <script>
-        new TypeIt(".typing_desc",{
-            speed: 90,
-            waitUntilVisible: true,
-            startDelay: 1000
-        }).type("A place to play Games, LoungeF2X.").move(-12).delete(10).type("use Apps").move(12).go();
+        document.addEventListener('DOMContentLoaded', function () {
+            new TypeIt(".typing_desc", {
+                speed: 90,
+                waitUntilVisible: true,
+                startDelay: 1000
+            })
+            .type("A place to play Games, LoungeF2X.")
+            .move(-12)
+            .delete(10)
+            .type("use Apps")
+            .move(12)
+            .go();
+        });
     </script>
 
     <center>
-        <h1 id="splash">goodbye to all the fallen comrades</h1>
+        <h1 id="splash"></h1>
         <div class="container">
             <div class="settings-card">
                 <a href="/page/bloxro.html">
