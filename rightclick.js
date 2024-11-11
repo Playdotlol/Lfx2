@@ -21,3 +21,6 @@
                 menu.style.top = e.pageY + "px";
             }
         }
+function openSettings(url) {
+  location.href = url;
+}
