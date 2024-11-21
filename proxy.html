@@ -12,6 +12,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.9/ace.js"></script>
     <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/console.js"></script>
     <script src="https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js"></script>
+    <script src="/rightclick.js"></script>
+    <script src="/tabcloaker.js"></script>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -70,35 +72,6 @@
         }
     </style>
     <script>
-        function promptForProxy(action) {
-            const userInput = prompt("Select a proxy to " + action + ":\nEnter '1' for Embed Game\nEnter '2' for Embed Proxy");
-            
-            let selectedProxy;
-
-            if (userInput === '1') {
-                selectedProxy = "embededGame";
-            } else if (userInput === '2') {
-                selectedProxy = "embededProxy";
-            } else {
-                alert("Invalid selection. Please enter '1' or '2'.");
-                return; // Exit if invalid
-            }
-
-            if (action === "Go Fullscreen") {
-                goFullscreen(selectedProxy);
-            } else if (action === "Reload") {
-                document.getElementById(selectedProxy).contentWindow.location.reload();
-            } else if (action === "Go Back") {
-                document.getElementById(selectedProxy).contentWindow.history.back();
-            } else if (action === "Go Forward") {
-                document.getElementById(selectedProxy).contentWindow.history.forward();
-            } else if (action === "Console") {
-                devTools(selectedProxy)
-            } else {
-                console.error("Unknown action:", action);
-            }
-        }
-
         function eToggle() {
             const activeIframe = document.querySelector("#frame-container iframe.active");
             
@@ -142,58 +115,6 @@
                 };
                 
                 erudaDocument.head.appendChild(script);
-            }
-        }
-
-        $(document).ready(function() {
-            if (typeof $.fn.jsConsole === "function") {
-                const cons = $(".console").jsConsole({worker: getWorker()});
-                cons.info("Type javascript here!");
-            } else {
-                const text = document.getElementById("console");
-                
-                if (text) {
-                    text.innerText = "Error loading console";
-                } else {
-                    console.error("Console element not found");
-                }
-                
-                console.error("jsConsole is not a function. Please check if the jsConsole library is loaded correctly.");
-            }
-        });
-
-        function getWorker() {
-            const req = new XMLHttpRequest();
-            req.open("GET", "https://cdn.rawgit.com/TarVK/chromeConsole/version-1.0/extensions/jsConsole/jsConsole.sf.js", false);
-            req.send();
-            
-            let blob;
-            
-            try {
-                blob = new Blob([req.responseText], {type: 'application/javascript'});
-            } catch (e) {
-                window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
-                blob = new BlobBuilder();
-                blob.append(req.responseText);
-                blob = blob.getBlob();
-            }
-            
-            return URL.createObjectURL(blob);
-        }
-
-        function goFullscreen(id) {
-            const element = document.getElementById(id);
-            
-            if (element) {
-                if (element.mozRequestFullScreen) {
-                    element.mozRequestFullScreen();
-                } else if (element.webkitRequestFullScreen) {
-                    element.webkitRequestFullScreen();
-                } else if (element.requestFullscreen) {
-                    element.requestFullscreen(); // Standard method
-                }
-                
-                console.log("fullscreened");
             }
         }
 
@@ -249,37 +170,72 @@
     </div>
 
     <center>
-        <h1><strong>Proxy</strong></h1>
-        <button class="ReloadButton" id="ConsoleButton" onclick="devTools('embededGame')">Console (Proxy 1 only use the menu for proxy 2)</button>
-        <button class="ReloadButton" id="ReloadButton">Reload</button>
-        <button class="ReloadButton" id="FullscreenButton">Fullscreen</button>
-        <button class="ReloadButton" id="BackButton">Go Back</button>
-        <button class="ReloadButton" id="ForwardButton">Go Forward</button>
+<center><h1><strong>Proxy</strong></h1></center>
 
-        <div>
-            <iframe name="embededGame" id="embededGame" src="/proxyiframe.html" height="500px" width="750px"></iframe>
-            <iframe name="embededProxy" id="embededProxy" src="https://surfdoge.pro/live" height="500px" width="750px"></iframe>
-        </div>
+<script>
+    function goFullscreen(id) {
+        var element = document.getElementById(id);
+        if (element.mozRequestFullScreen) {
+          element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullScreen) {
+          element.webkitRequestFullScreen();
+        }
+        console.log("fullscreened")
+    }
+</script>
+    <center><button class="FullscreenButton" id="ReloadButton" onclick="reloadEmbed('embededGame'); return true">Reload</button>
+    <button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button>
+    <button class="FullscreenButton" id="BackButton" onclick="goBack('embededGame')">Go Back</button>
+    <button class="FullscreenButton" id="ConsoleBUtton" onclick="devTools('embededGame')">Console</button>
 
-    </center>
+    <button class="FullscreenButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button></center>
+<container>
+<center><iframe name="embededGame" id="embededGame" src="/proxyiframe.html"
+height= "500px"
+width= "750px"
+></iframe>
+</container></center>
+    <style type="text/css">
+        .context-menu {
+            position: absolute;
+            text-align: center;
+            background: lightgray;
+            border: 1px solid black;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+            padding: 10px;
+        }
 
-    <!-- Add event listeners to buttons -->
-    <script>
-        document.getElementById("ReloadButton").addEventListener("click", function() {
-            promptForProxy('Reload');
-        });
+        .context-menu ul {
+            padding: 0px;
+            margin: 0px;
+            min-width: 150px;
+            list-style: none;
+        }
 
-        document.getElementById("FullscreenButton").addEventListener("click", function() {
-            promptForProxy('Go Fullscreen');
-        });
+        .context-menu ul li {
+            padding-bottom: 7px;
+            border-radius: 100px;
+            padding-top: 7px;
+            border: 1px solid black;
+        }
 
-        document.getElementById("BackButton").addEventListener("click", function() {
-            promptForProxy('Go Back');
-        });
+        .context-menu ul li a {
+            text-decoration: none;
+            color: black;
+        }
 
-        document.getElementById("ForwardButton").addEventListener("click", function() {
-            promptForProxy('Go Forward');
-        });
-    </script>
+        .context-menu ul li:hover {
+            background: darkgray;
+        }
+    </style>
+    <div id="contextMenu" class="context-menu" style="display:none">
+        <ul>
+            <li onclick="openSettings('/')"><a>Home</a></li>
+            <li onclick="openSettings('/proxy.html')"><a>Proxy</a></li>
+            <li onclick="cloakAll()"><a>Cloak Tab</a></li>
+        </ul>
+    </div>
+        <script src="/rightclick.js"></script>
 </body>
 </html>

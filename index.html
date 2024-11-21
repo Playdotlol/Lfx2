@@ -1,185 +1,265 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clever | Portal</title>
-  <link rel="shortcut icon" type="image/x-icon" href="/images/clever.jpg"/>
-  <script src="/tabcloaker.js"></script>
-  <script>Help()</script>
-<script src=https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js></script>
-  <script>Help1()</script>
+    
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="/tabcloaker.js"></script>
+    <script>Help()</script><link rel="icon" type="image/png" href="/images/clever.jpg"> 
+    <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>     
+    <script src="/rightclick.js"></script>
+    <script>Help1()</script>
+      <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+          
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* Allow the items to wrap */
+            justify-content: center; /* Centering the cards */
+            padding: 20px; /* Add padding around the container */
+        }
+
+        .settings-card {
+            background-color: transperant;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+            width: 300px; /* Set a fixed width for the card */
+            transition: all .3s ease;
+            margin: 10px; /* Space between cards */
+        }
+
+        .settings-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .settings-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, .2);
+        }
+
+        .typing_desc {
+            font-size: 18px;
+        }
+
+        .btn {
+            border: none;
+            background-color: inherit;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #333;
+        }
+
+        .default {
+            color: white;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .settings-card {
+                width: 100%; /* Full width on small screens */
+                max-width: 300px; /* Limit max width */
+            }
+        }
+    </style>
 </head>
 <body>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-     />
-    <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      .navbar {
-        overflow: hidden;
-        background-color: #333;
-      }
-
-      .navbar a {
-        float: left;
-        font-size: 16px;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-
-      .dropdown {
-        float: left;
-        overflow: hidden;
-      }
-
-      .dropdown .dropbtn {
-        font-size: 16px;
-        border: none;
-        outline: none;
-        color: white;
-        padding: 14px 16px;
-        background-color: inherit;
-        font-family: inherit;
-        margin: 0;
-      }
-
-      .navbar a:hover,
-      .dropdown:hover .dropbtn {
-        background-color: red;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-      }
-
-      .dropdown-content a {
-        float: none;
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-      }
-
-      .dropdown-content a:hover {
-        background-color: #ddd;
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-    </style>
-  </head>
-  <body style="background-color: white">
     <div class="navbar">   
         <a href="/">Home</a>
-      <a href="/proxy.html">Proxy</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/settings.html">Settings</a>
-      <a href="/category/shooting.html">Shooting</a>
-      <a href="/category/apps.html">Apps</a>
-      <div class="dropdown">
-        <button class="dropbtn">
-          Popular Games
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-
-          <a href="/page/1v1lol.html">1v1.lol</a>
-          <a href="/app/geforce.html">Fortnite</a>
-          <a href="/page/bloxro.html">Roblox</a>
-          <a href="/page/dogmine.html">Doge Miner</a>
-          <a href="/page/shotpixel.html">Pixel Shooter</a>
-          <a href="/page/snowrider.html">Snow Rider</a>
-          <a href="/page/googlehiphop.html">Google Hip Hop</a>
-          <a href="/page/taggame.html">Tag Game</a>
-
+        <a href="/proxy.html">Proxy</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/settings.html">Settings</a>
+        <a href="/category/shooting.html">Shooting</a>
+        <a href="/category/apps.html">Apps</a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                Popular Games
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/page/1v1lol.html">1v1.lol</a>
+                <a href="/app/geforce.html">Fortnite</a>
+                <a href="/page/bloxro.html">Roblox</a>
+                <a href="/page/dogmine.html">Doge Miner</a>
+                <a href="/page/shotpixel.html">Pixel Shooter</a>
+                <a href="/page/snowrider.html">Snow Rider</a>
+                <a href="/page/googlehiphop.html">Google Hip Hop</a>
+                <a href="/page/taggame.html">Tag Game</a>
+            </div>
         </div>
-      </div>
     </div>
 
-</style>
-</head>
-<body>
-  </body>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.btn {
-  border: none;
-  background-color: inherit;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
-  display: inline-block;
-}
+    <center>
+        <h1>LoungeF2X</h1>
+        <h1>
+            <span class="typing_desc"></span>
+        </h1>
+    </center>
 
-.btn:hover {background: #333;}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new TypeIt(".typing_desc", {
+                speed: 90,
+                waitUntilVisible: true,
+                startDelay: 1000
+            })
+            .type("A place to play Games, LoungeF2X.")
+            .move(-12)
+            .delete(10)
+            .type("use Apps")
+            .move(12)
+            .go();
+        });
+    </script>
 
-.default {color: white;}
-</style>
-</head>
-<body>
-<center><bold><strong><h1>LoungeF2X</h1></strong></bold></center>
-      <center><h1><span class=typing_desc style=font-size:18px></span></center>
-  </p></h1>
-  <script>
-      new TypeIt(".typing_desc",{
-          speed: 90,
-          waitUntilVisible: !0,
-          startDelay: 1e3
-      }).type("A place to play Games, LoungeF2X.").move(-12).delete(10).type("use Apps").move(12).go()
-  </script>
-<center><bold><strong><h1 id="splash"></h1></strong></bold></center>
-
-<center>
-    <div class="container">
-        <div class="responsive">
-            <div class="gallery">
+    <center>
+        <h1 id="splash"></h1>
+        <div class="container">
+            <div class="settings-card">
                 <a href="/page/bloxro.html">
-                    <img src="images/roblox.png" width="600" height="400" alt="Roblox">
+                    <img src="images/roblox.png" alt="Roblox">
                 </a>
-                </div>
-            <div class="gallery">
+            </div>
+            <div class="settings-card">
                 <a href="/page/1v1lol.html">
-                    <img src="images/1v1lol.png" width="600" height="400" alt="1v1.lol">
+                    <img src="images/1v1lol.png" alt="1v1.lol">
                 </a>
             </div>
-            <div class="gallery">
-                <a href="/page/nitefort.html">
-                    <img src="images/fortnite.png" width="600" height="400" alt="Fortnite">
+            <div class="settings-card">
+                <a href="/app/geforce.html">
+                    <img src="images/fortnite.png" alt="Fortnite">
                 </a>
             </div>
-            <div class="gallery">
+            <div class="settings-card">
                 <a href="/page/dogmine.html">
-                    <img src="images/dogeminer.png" width="600" height="400" alt="Doge Miner">
+                    <img src="images/dogeminer.png" alt="Doge Miner">
                 </a>
             </div>
+        </div>
+    </center>
+
+    <script>
+        console.log("Successfully Loaded");
+        fetch('splash.json')
+            .then((res) => res.json())
+            .then((data) => {
+                document.querySelector('#splash').innerHTML = data[Math.floor(Math.random() * data.length)];
+            });
+    </script>
+
+    <center><p>Made with love by LIS and help from <a href="https://zeelix.xyz/bio.html">Zeeless</a></p></center>
+    <style type="text/css">
+        .context-menu {
+            position: absolute;
+            text-align: center;
+            background: lightgray;
+            border: 1px solid black;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+            padding: 10px;
+        }
+
+        .context-menu ul {
+            padding: 0px;
+            margin: 0px;
+            min-width: 150px;
+            list-style: none;
+        }
+
+        .context-menu ul li {
+            padding-bottom: 7px;
+            border-radius: 100px;
+            padding-top: 7px;
+            border: 1px solid black;
+        }
+
+        .context-menu ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .context-menu ul li:hover {
+            background: darkgray;
+        }
+    </style>
+    <div id="contextMenu" class="context-menu" style="display:none">
+        <ul>
+            <li onclick="openSettings('/')"><a>Home</a></li>
+            <li onclick="openSettings('/proxy.html')"><a>Proxy</a></li>
+            <li onclick="cloakAll()"><a>Cloak Tab</a></li>
+        </ul>
     </div>
-    </div>
-</center>
-  <script>console.log("Successfully Loaded")</script>
-<script>
-  fetch('splash.json')
-    .then((res) => res.json())
-    .then((data) => {
-      document.querySelector('#splash').innerHTML =
-        data[Math.floor(Math.random() * data.length)]
-    })
-</script>
-</body></center>
+</body></html>
