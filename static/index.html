@@ -1,0 +1,234 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clever | Portal</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="tabcloaker.js"></script>
+    <script>Help()</script><link rel="icon" type="image/png" href="/images/clever.jpg"> 
+    <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>     
+    <script src="rightclick.js"></script>
+    <script src="navbar.js"></script>
+    <script>Help1()</script>
+      <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+          
+        .container {
+            display: flex;
+            flex-wrap: wrap; /* Allow the items to wrap */
+            justify-content: center; /* Centering the cards */
+            padding: 20px; /* Add padding around the container */
+        }
+
+        .settings-card {
+            background-color: transperant;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+            width: 300px; /* Set a fixed width for the card */
+            transition: all .3s ease;
+            margin: 10px; /* Space between cards */
+        }
+
+        .settings-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .settings-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, .2);
+        }
+
+        .typing_desc {
+            font-size: 18px;
+        }
+
+        .btn {
+            border: none;
+            background-color: inherit;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #333;
+        }
+
+        .default {
+            color: white;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .settings-card {
+                width: 100%; /* Full width on small screens */
+                max-width: 300px; /* Limit max width */
+            }
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>LoungeF2X</h1>
+        <h1>
+            <span class="typing_desc"></span>
+        </h1>
+    </center>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new TypeIt(".typing_desc", {
+                speed: 90,
+                waitUntilVisible: true,
+                startDelay: 1000
+            })
+            .type("A place to play Games, LoungeF2X.")
+            .move(-12)
+            .delete(10)
+            .type("use Apps")
+            .move(12)
+            .go();
+        });
+    </script>
+
+<center>
+<form id="uv-form">
+    <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
+    <input id="uv-address" type="text" placeholder="Search Google or type an URL" class="form__input"/>
+  </form>
+</center>
+
+    <script>
+        console.log("Successfully Loaded");
+        fetch('splash.json')
+            .then((res) => res.json())
+            .then((data) => {
+                document.querySelector('#splash').innerHTML = data[Math.floor(Math.random() * data.length)];
+            });
+    </script>
+
+    <center><p>Made with love by LIS and help from <a href="https://zeelix.xyz/bio.html">Zeeless</a></p></center>
+    <style type="text/css">
+        .context-menu {
+            position: absolute;
+            text-align: center;
+            background: lightgray;
+            border: 1px solid black;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+            padding: 10px;
+        }
+
+        .context-menu ul {
+            padding: 0px;
+            margin: 0px;
+            min-width: 150px;
+            list-style: none;
+        }
+
+        .context-menu ul li {
+            padding-bottom: 7px;
+            border-radius: 100px;
+            padding-top: 7px;
+            border: 1px solid black;
+        }
+
+        .context-menu ul li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .context-menu ul li:hover {
+            background: darkgray;
+        }
+    </style>
+    <div id="contextMenu" class="context-menu" style="display:none">
+        <ul>
+            <li onclick="openSettings('/')"><a>Home</a></li>
+            <li onclick="openSettings('/proxy.html')"><a>Proxy</a></li>
+            <li onclick="cloakAll()"><a>Cloak Tab</a></li>
+        </ul>
+    </div>
+    <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+    new Crate({
+        server: '1308263296511512647', // School Heaven
+        channel: '1308263296981270552' // #general
+    })
+</script>
+<script src="uv/uv.bundle.js" defer></script>
+<script src="uv/uv.config.js" defer></script>
+<script src="register-sw.js" defer></script>
+<script src="search.js" defer></script>
+<script src="index.js" defer></script>
+
+</body></html>
