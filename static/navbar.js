@@ -39,7 +39,7 @@ function insertNavbar() {
     <div id="contextMenu" class="context-menu" style="display:none">
         <ul>
             <li onclick="openSettings('/')"><a>Home</a></li>
-            <li onclick="openSettings('/proxy.html')"><a>Proxy</a></li>
+            <li onclick="openSettings('/static/proxy.html')"><a>Proxy</a></li>
             <li onclick="cloakAll()"><a>Cloak Tab</a></li>
         </ul>
     </div>
