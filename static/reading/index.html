@@ -18,6 +18,41 @@
     
     <script>Help1()</script>
       <style>
+.game-bar {
+    width: 50%;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--secondary-bg-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px var(--accent-color);
+    z-index: 9999;
+    overflow: hidden;
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .game-bar {
+        width: 80%;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-bar {
+        width: 90%;
+        gap: 0.5rem;
+    }
+}
         body {
             font-family: Arial, Helvetica, sans-serif;
             color: white;
