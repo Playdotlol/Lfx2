@@ -110,8 +110,8 @@
 <script src="/static/forward.js"></script>
 
 <script>
-    function openErudaConsole(iframeSelector) {
-    const iframe = document.querySelector(iframeSelector);
+    function openErudaConsole(element) {
+    const iframe = document.ocument.querySelectorAll(element);
     if (!iframe) {
         console.error('Iframe not found');
         return;
