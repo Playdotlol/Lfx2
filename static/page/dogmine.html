@@ -13,12 +13,6 @@
     <link rel="stylesheet" type="text/css" href="/static/style.css">
 </head>
 <body>
-
-</head>
-<body>
-</style>
-</head>
-<body>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -116,6 +110,22 @@
 <script src="/static/forward.js"></script>
 
 <script>
+    function openErudaConsole(iframeSelector) {
+    const iframe = document.querySelector(iframeSelector);
+    if (!iframe) {
+        console.error('Iframe not found');
+        return;
+    }
+
+    const erudaScript = document.createElement('script');
+    erudaScript.src = 'https://cdn.jsdelivr.net/npm/eruda';
+    erudaScript.onload = () => {
+        eruda.init();
+        const iframeWindow = iframe.contentWindow;
+        eruda.set('iframe', iframeWindow);
+    };
+    document.body.appendChild(erudaScript);
+}
     function goFullscreen(id) {
         var element = document.getElementById(id);
         if (element.mozRequestFullScreen) {
@@ -125,6 +135,7 @@
         }
         console.log("fullscreened")
     }
+    openErudaConsole("embededGame")
 </script>
     <center><button class="ReloadButton" id="ReloadButton" onclick="reloadEmbed('embededGame'); return true">Reload</button>
     <button class="FullscreenButton" id="FullscreenButton" onclick="goFullscreen('embededGame'); return true">Fullscreen</button>
