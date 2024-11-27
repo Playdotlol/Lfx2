@@ -111,7 +111,7 @@
 
 <script>
     function openErudaConsole(element) {
-    const iframe = document.getElementById(element);
+    const iframe = document.querySelectorAll(element);
     if (!iframe) {
         console.error('Iframe not found');
         return;
@@ -122,7 +122,7 @@
     erudaScript.onload = () => {
         eruda.init();
         const iframeWindow = iframe.contentWindow;
-        eruda.set('iframe', iframeWindow);
+        eruda.set(\iframeWindow);
     };
     document.body.appendChild(erudaScript);
 }
