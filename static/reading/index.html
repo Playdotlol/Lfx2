@@ -18,6 +18,17 @@
     
     <script>Help1()</script>
       <style>
+          .proxybutton {
+    margin: 5px;
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    padding: 10px 20px;
+    border: 2px solid;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
 .game-bar {
     width: 50%;
     position: fixed;
@@ -217,10 +228,10 @@
             </div>
         </div>
         <div class="game-bar">
-            <button onclick="toggleFullscreenPRX()">Fullscreen</button>
-            <button onclick="refreshIframePRX()">Refresh</button>
-            <button onclick="goBack()">Back</button>
-            <button onclick="goForward()">Forward</button>
+            <button class="proxybutton" onclick="toggleFullscreenPRX()">Fullscreen</button>
+            <button class="proxybutton" onclick="refreshIframePRX()">Refresh</button>
+            <button class="proxybutton" onclick="goBack()">Back</button>
+            <button class="proxybutton" onclick="goForward()">Forward</button>
 
         </div>
 
