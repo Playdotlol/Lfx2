@@ -11,28 +11,36 @@
     <script src="tabcloaker.js"></script>
     <script src="navbar.js"></script>
     <script src="rightclick.js"></script>
-    <script>
-        const formName = document.getElementById('TabName');
-const urlInputName = document.getElementById('TabName');
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const formName = document.getElementById('TabName');
+    const urlInputName = document.getElementById('TabNameInput'); // Ensure this ID matches the input element in your HTML
 
-formName.addEventListener('submit', function(event) {
-    event.preventDefault();
-    let url = urlInputName.value.trim();
-    localStorage.setItem('TabText', url);
-    urlInput.value = '';
-});
-
-const formImage = document.getElementById('TabImage');
-const urlInputImage = document.getElementById('TabImage');
-formImage.addEventListener('submit', function(event) {
-    event.preventDefault();
-    let url = urlInputImage.value.trim();
-    if (!url.startsWith('https://')) {
-        url = 'https://' + url; 
+    if (formName && urlInputName) {
+        formName.addEventListener('submit', function (event) {
+            event.preventDefault();
+            let url = urlInputName.value.trim();
+            localStorage.setItem('TabText', url);
+            urlInputName.value = ''; // Clear the input field
+        });
     }
-    localStorage.setItem('TabImage', url);
-    urlInput.value = '';
-});</script>
+
+    const formImage = document.getElementById('TabImage');
+    const urlInputImage = document.getElementById('TabImageInput'); // Ensure this ID matches the input element in your HTML
+
+    if (formImage && urlInputImage) {
+        formImage.addEventListener('submit', function (event) {
+            event.preventDefault();
+            let url = urlInputImage.value.trim();
+            if (!url.startsWith('https://')) {
+                url = 'https://' + url;
+            }
+            localStorage.setItem('TabImage', url);
+            urlInputImage.value = ''; // Clear the input field
+        });
+    }
+});
+</script>
     <script>Help()</script> 
     <script src=https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js></script>     
     <script>Help1()</script>
