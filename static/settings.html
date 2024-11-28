@@ -111,12 +111,18 @@
     <div class="settings-card">
     <h1 class="white">Tab Image</h1>
         <p class="white">Put in the url that you want the image of the tab to be.</p>
-  <input type="text" id="ImageLocalStorage" class="CDF" placeholder="Tab Image URL"><br>
+    <form id="TabImage" class="CDF">
+        <input type="text" id="TabName" placeholder="Enter your URL here" required>
+        <button type="submit">Save Image</button>
+    </form>
   </div>
     <div class="settings-card">
     <h1 class="white">Tab Name</h1>
                 <p class="white">Put in the name that you want the title of the tab to be.</p>
-  <input type="text" id="TextLocalStorage" class="CDF" placeholder="Tab Name"><br>
+    <form id="TabName" class="CDF">
+        <input type="text" id="TabName" placeholder="Enter your URL here" required>
+        <button type="submit">Save Name</button>
+    </form>
       </div>
         <div class="settings-card">
             <h1 class="white">About:Blank</h1>
@@ -151,9 +157,9 @@
             background: lightgray;
             border: 1px solid black;
             border-radius: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
             padding: 10px;
         }
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
 
         .context-menu ul {
             padding: 0px;
