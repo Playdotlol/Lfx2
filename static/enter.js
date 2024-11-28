@@ -1,13 +1,13 @@
 // Get the form and input elements
-const form = document.getElementById('TabName');
-const urlInput = document.getElementById('TabName');
+const formName = document.getElementById('TabName');
+const urlInputName = document.getElementById('TabName');
 
 // Event listener for form submission
 form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
     // Get the value from the input field
-    let url = urlInput.value.trim();
+    let url = urlInputName.value.trim();
 
     // Save the URL to local storage
     localStorage.setItem('TabText', url);
@@ -16,15 +16,15 @@ form.addEventListener('submit', function(event) {
     urlInput.value = '';
 });
 
-const form = document.getElementById('TabImage');
-const urlInput = document.getElementById('TabImage');
+const formImage = document.getElementById('TabImage');
+const urlInputImage = document.getElementById('TabImage');
 
 // Event listener for form submission
 form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
 
     // Get the value from the input field
-    let url = urlInput.value.trim();
+    let url = urlInputImage.value.trim();
 
     // Check if the URL starts with 'https://'
     if (!url.startsWith('https://')) {
