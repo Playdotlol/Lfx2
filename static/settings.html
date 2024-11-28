@@ -11,10 +11,11 @@
     <script src="tabcloaker.js"></script>
     <script src="navbar.js"></script>
     <script src="rightclick.js"></script>
-    <script>const formName = document.getElementById('TabName');
+    <script>
+        const formName = document.getElementById('TabName');
 const urlInputName = document.getElementById('TabName');
 
-form.addEventListener('submit', function(event) {
+formName.addEventListener('submit', function(event) {
     event.preventDefault();
     let url = urlInputName.value.trim();
     localStorage.setItem('TabText', url);
@@ -23,7 +24,7 @@ form.addEventListener('submit', function(event) {
 
 const formImage = document.getElementById('TabImage');
 const urlInputImage = document.getElementById('TabImage');
-form.addEventListener('submit', function(event) {
+formImage.addEventListener('submit', function(event) {
     event.preventDefault();
     let url = urlInputImage.value.trim();
     if (!url.startsWith('https://')) {
