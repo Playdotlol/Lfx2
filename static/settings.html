@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             let url = urlInputImage.value.trim();
             if (!url.startsWith('https://')) {
-                if (url.includes('/static/images')) {
-                url = url;        
+                if (url.includes('/static/images/')) {
+                urlNew = url;        
                 } else {
-                url = 'https://' + url;
+                urlNew = 'https://' + url;
             }
 }
-            localStorage.setItem('TabImage', url);
+            localStorage.setItem('TabImage', urlNew);
             urlInputImage.value = ''; // Clear the input field
             cloakAll();
         })
