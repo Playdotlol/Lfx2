@@ -245,7 +245,7 @@
             console.log("Encoded URL from query string:", encodedUrl);
 
             const iframe = document.getElementById("proxyIframe");
-            const Url = encodedUrl.replace("%2F", "/")
+            const Url = encodedUrl.replace(/%2F/g, "/");
             iframe.src = Url;
         } else {
             console.error("No URL found in the query string.");
