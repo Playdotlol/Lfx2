@@ -231,16 +231,16 @@
       <img src="/static/images/discord.jpg" width="600" height="400">
       <center><p>Discord</p></center>
     </a>
-        <button onclick="addToFavorites('Game 3')">Add to Favorites</button>
+        <button onclick="addToFavorites('Game 1')">Add to Favorites</button>
   </div>
     
-    <div class="settings-card">
-      <a href="/static/app/netflix.html">
-        <img src="/static/images/netflix.png" width="600" height="400">
-          <center><p>Netflix</p></center>
-      </a>
-        <button onclick="addToFavorites('Game 3')">Add to Favorites</button>
-    </div>
+<div class="settings-card">
+  <a href="/static/app/netflix.html">
+    <img src="/static/images/netflix.png" width="600" height="400">
+    <center><p>Netflix</p></center>
+  </a>
+  <button onclick="addToFavorites('Game 2')">Add to Favorites</button>
+</div>
 
     <div class="settings-card">
       <a href="/static/app/hulu.html">
@@ -255,43 +255,10 @@
       <img src="/static/images/youtube.jpg" width="600" height="400">
         <center><p>Youtube</p></center>
     </a>
-        <button onclick="addToFavorites('Game 3')">Add to Favorites</button>
+     <button onclick="addToFavorites('Game 4')">Add to Favorites</button>
   </div>
-</div></center>
-    <style type="text/css">
-        .context-menu {
-            position: absolute;
-            text-align: center;
-            background: lightgray;
-            border: 1px solid black;
-            border-radius: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
-            padding: 10px;
-        }
-
-        .context-menu ul {
-            padding: 0px;
-            margin: 0px;
-            min-width: 150px;
-            list-style: none;
-        }
-
-        .context-menu ul li {
-            padding-bottom: 7px;
-            border-radius: 100px;
-            padding-top: 7px;
-            border: 1px solid black;
-        }
-
-        .context-menu ul li a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .context-menu ul li:hover {
-            background: darkgray;
-        }
-    </style>
+</div>
+</center>
     <div id="contextMenu" class="context-menu" style="display:none">
         <ul>
             <li onclick="openSettings('/')"><a>Home</a></li>
@@ -307,16 +274,16 @@
         channel: '1308263296981270552' // #general
     })
 </script>
-<script>    // Function to set cookies
+<script>
     function setCookie(name, value, days) {
       const date = new Date();
       date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
       const expires = `expires=${date.toUTCString()}`;
       document.cookie = `${name}=${value}; ${expires}; path=/`;
     }
-    // Function to save favorites to cookies
-    function saveFavorites(favorites) {
+function saveFavorites(favorites) {
       setCookie('favorites', JSON.stringify(favorites), 7); // Expires in 7 days
-    }</script>
+    }
+</script>
 <script>document.addEventListener('DOMContentLoaded', cloakAll());</script>
 </body>
