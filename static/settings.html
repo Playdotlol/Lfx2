@@ -11,6 +11,43 @@
     <script src="tabcloaker.js"></script>
     <script src="navbar.js"></script>
     <script src="rightclick.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const formName = document.getElementById('TabName');
+    const urlInputName = document.getElementById('TabNameInput'); // Ensure this ID matches the input element in your HTML
+
+    if (formName && urlInputName) {
+        formName.addEventListener('submit', function (event) {
+            event.preventDefault();
+            let url = urlInputName.value.trim();
+            localStorage.setItem('TabText', url);
+            urlInputImage.value = ''; // Clear the input field
+            cloakAll();
+        });
+    }
+
+    const formImage = document.getElementById('TabImage');
+    const urlInputImage = document.getElementById('TabImageInput'); // Ensure this ID matches the input element in your HTML
+
+    if (formImage && urlInputImage) {
+        formImage.addEventListener('submit', function (event) {
+            event.preventDefault();
+            let url = urlInputImage.value.trim();
+            let url2 = window.location.origin
+            if (!url.startsWith('https://')) {
+                if (url.includes('/static/images/')) {
+                urlNew = url2 + url;        
+                } else {
+                urlNew = 'https://' + url;
+            }
+}
+            localStorage.setItem('TabImage', urlNew);
+            urlInputImage.value = ''; // Clear the input field
+            cloakAll();
+        })
+        };
+    });
+</script>
     <script>Help()</script> 
     <script src=https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js></script>     
     <script>Help1()</script>
@@ -106,17 +143,22 @@
 </style>
 </head>
 <body>
-    <script src="enter.js" defer></script>
   <div class="settings-container">
     <div class="settings-card">
     <h1 class="white">Tab Image</h1>
         <p class="white">Put in the url that you want the image of the tab to be.</p>
-  <input type="text" id="ImageLocalStorage" class="CDF" placeholder="Tab Image URL"><br>
+    <form id="TabImage" style="background:transparent">
+         <input type="text" class="CDF"id="TabImageInput" placeholder="Enter your URL here" required>
+       <button type="submit" class="CDF">Save Image</button>
+    </form>
   </div>
-    <div class="settings-card">
+<div class="settings-card">
     <h1 class="white">Tab Name</h1>
                 <p class="white">Put in the name that you want the title of the tab to be.</p>
-  <input type="text" id="TextLocalStorage" class="CDF" placeholder="Tab Name"><br>
+    <form id="TabName" style="background:transparent">
+        <input type="text" class="CDF" id="TabNameInput" placeholder="Enter your URL here" required>
+        <button type="submit" class="CDF">Save Name</button>
+    </form>
       </div>
         <div class="settings-card">
             <h1 class="white">About:Blank</h1>
@@ -151,9 +193,9 @@
             background: lightgray;
             border: 1px solid black;
             border-radius: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
             padding: 10px;
         }
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
 
         .context-menu ul {
             padding: 0px;
