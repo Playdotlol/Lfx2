@@ -136,14 +136,6 @@
             }
         }
 </style>
-</head>
-<body>
-
-</head>
-<body>
-</style>
-</head>
-<body>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -230,7 +222,6 @@
 .btn:hover {background: #333;}
 
 .default {color: white;}
-</style>
 </head>
 <body>
 
@@ -240,6 +231,7 @@
       <img src="/static/images/discord.jpg" width="600" height="400">
       <center><p>Discord</p></center>
     </a>
+        <button onclick="addToFavorites('Game 3')">Add to Favorites</button>
   </div>
     
     <div class="settings-card">
@@ -247,6 +239,7 @@
         <img src="/static/images/netflix.png" width="600" height="400">
           <center><p>Netflix</p></center>
       </a>
+        <button onclick="addToFavorites('Game 3')">Add to Favorites</button>
     </div>
 
     <div class="settings-card">
@@ -254,6 +247,7 @@
         <img src="/static/images/hulu.png" width="600" height="400">
           <center><p>Hulu</p></center>
       </a>
+    <button onclick="addToFavorites('Game 3')">Add to Favorites</button>
     </div>
   
   <div class="settings-card">
@@ -261,6 +255,7 @@
       <img src="/static/images/youtube.jpg" width="600" height="400">
         <center><p>Youtube</p></center>
     </a>
+        <button onclick="addToFavorites('Game 3')">Add to Favorites</button>
   </div>
 </div></center>
     <style type="text/css">
@@ -312,5 +307,16 @@
         channel: '1308263296981270552' // #general
     })
 </script>
+<script>    // Function to set cookies
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = `expires=${date.toUTCString()}`;
+      document.cookie = `${name}=${value}; ${expires}; path=/`;
+    }
+    // Function to save favorites to cookies
+    function saveFavorites(favorites) {
+      setCookie('favorites', JSON.stringify(favorites), 7); // Expires in 7 days
+    }</script>
 <script>document.addEventListener('DOMContentLoaded', cloakAll());</script>
 </body>
