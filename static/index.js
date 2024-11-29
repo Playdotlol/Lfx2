@@ -21,7 +21,7 @@ form.addEventListener("submit", async (event) => {
   const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
   const usa = encodeURIComponent(url)
   const USA = usa.replace(/%2F/g, "/");
-  localStorage.setItem("url", usa);
+  localStorage.setItem("url", USA);
   window.location.href = `/static/reading/`;
 });
 
