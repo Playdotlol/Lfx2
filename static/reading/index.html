@@ -239,17 +239,22 @@
 
 
     <script>
-        const encodedUrl = localStorage.getItem("url");
+const encodedUrl = localStorage.getItem("url");
 
-        if (encodedUrl) {
-            console.log("Encoded URL from query string:", encodedUrl);
+if (encodedUrl) {
+    console.log("Encoded URL from query string:", encodedUrl);
 
-            const iframe = document.getElementById("proxyIframe");
-            const Url = encodedUrl.replace(/%2F/g, "/");
-            iframe.src = Url;
-        } else {
-            console.error("No URL found in the query string.");
-        }
+    const iframe = document.getElementById("proxyIframe");
+
+    // Append the encoded URL to the proxy path
+    const proxyPath = `/static/tiw/${encodedUrl}`;
+    iframe.src = proxyPath;
+
+    console.log("Iframe source set to:", proxyPath);
+} else {
+    console.error("No URL found in the query string.");
+}
+
     </script>
 </body>
 
