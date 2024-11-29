@@ -33,15 +33,19 @@ document.addEventListener('DOMContentLoaded', function () {
         formImage.addEventListener('submit', function (event) {
             event.preventDefault();
             let url = urlInputImage.value.trim();
+            if !url.includes('/static/images') {
+                url = url;        
+                } else {
             if (!url.startsWith('https://')) {
                 url = 'https://' + url;
             }
+}
             localStorage.setItem('TabImage', url);
             urlInputImage.value = ''; // Clear the input field
             cloakAll();
-        });
-    }
-});
+        })
+        };
+    });
 </script>
     <script>Help()</script> 
     <script src=https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js></script>     
