@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
             let url = urlInputImage.value.trim();
             if (!url.startsWith('https://')) {
                 if (url.includes('/static/images/')) {
-                urlNew = url;        
+                urlNew = window.location.href.split('?')[0]; + url;        
                 } else {
                 urlNew = 'https://' + url;
             }
