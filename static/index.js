@@ -19,9 +19,7 @@ form.addEventListener("submit", async (event) => {
 
   const url = search(address.value, searchEngine.value);
   const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
-  const usa = encodeURIComponent(url)
-  const USA = usa.replace(/%2F/g, "/");
-  localStorage.setItem("url", USA);
+  localStorage.setItem("url", encodeURIComponent(url));
   window.location.href = `/static/reading/`;
 });
 
