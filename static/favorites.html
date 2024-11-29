@@ -1,233 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clever</title>
-    <link rel="icon" type="image/png" href="/static/images/clever.jpg"> 
-  <script src="/static/tabcloaker.js"></script>
-  <script>Help()</script>
-  <script src="/static/tabcloakername.js"></script>
-  <script>Help1()</script>
-    <link rel="stylesheet" href="/static/style.css">
-     <style>
-    .settings-card p{color:Black; float: center;   font-size: 35px;}a{color:var(--text-primary)}
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: white;
-        }
-
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        .navbar a {
-            float: left;
-            font-size: 16px;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .dropdown {
-            float: left;
-            overflow: hidden;
-        }
-
-        .dropdown .dropbtn {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: white;
-            padding: 14px 16px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-        }
-
-        .navbar a:hover,
-        .dropdown:hover .dropbtn {
-            background-color: red;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            float: none;
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-          
-        .container {
-            display: flex;
-            flex-wrap: wrap; /* Allow the items to wrap */
-            justify-content: center; /* Centering the cards */
-            padding: 20px; /* Add padding around the container */
-        }
-
-        .settings-card {
-            background-color: transperant;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
-            width: 300px; /* Set a fixed width for the card */
-            transition: all .3s ease;
-            margin: 10px; /* Space between cards */
-        }
-
-        .settings-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .settings-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, .2);
-        }
-
-        .typing_desc {
-            font-size: 18px;
-        }
-
-        .btn {
-            border: none;
-            background-color: inherit;
-            padding: 14px 28px;
-            font-size: 16px;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background: #333;
-        }
-
-        .default {
-            color: white;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .settings-card {
-                width: 100%; /* Full width on small screens */
-                max-width: 300px; /* Limit max width */
-            }
-        }
-</style>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      .navbar {
-        overflow: hidden;
-        background-color: #333;
-      }
-
-      .navbar a {
-        float: left;
-        font-size: 16px;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-
-      .dropdown {
-        float: left;
-        overflow: hidden;
-      }
-
-      .dropdown .dropbtn {
-        font-size: 16px;
-        border: none;
-        outline: none;
-        color: white;
-        padding: 14px 16px;
-        background-color: inherit;
-        font-family: inherit;
-        margin: 0;
-      }
-
-      .navbar a:hover,
-      .dropdown:hover .dropbtn {
-        background-color: red;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-      }
-
-      .dropdown-content a {
-        float: none;
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-      }
-
-      .dropdown-content a:hover {
-        background-color: #ddd;
-      }
-
-      .dropdown:hover .dropdown-content {
-        display: block;
-      }
-    </style>
-  </head>
-  <body style="background-color: white">
-<style>
-.btn {
-  border: none;
-  background-color: inherit;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.btn:hover {background: #333;}
-
-.default {color: white;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorites List with Cookies</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .game-card {
+      display: inline-block;
+      width: 150px;
+      height: 200px;
+      margin: 10px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .game-card:hover {
+      transform: scale(1.05);
+    }
+    .favorites {
+      margin-top: 20px;
+    }
+  </style>
 </head>
-  <body>
-      <h2>Your Favorites</h2>
-  <ul id="favorites-list" class="favorites"></ul>
-<script>
+<body>
+  <h1>Games</h1>
+  <div id="games-list">
+    <div class="game-card" onclick="addToFavorites('Game 1', 'game1.html')">
+      <span>Game 1</span>
+    </div>
+    <div class="game-card" onclick="addToFavorites('Game 2', 'game2.html')">
+      <span>Game 2</span>
+    </div>
+    <div class="game-card" onclick="addToFavorites('Game 3', 'game3.html')">
+      <span>Game 3</span>
+    </div>
+  </div>
+
+  <h2>Your Favorites</h2>
+  <div id="favorites-list" class="favorites"></div>
+
+  <script>
     // Function to get cookies
     function getCookie(name) {
       const value = `; ${document.cookie}`;
@@ -235,19 +55,31 @@
       if (parts.length === 2) return parts.pop().split(';').shift();
       return '';
     }
+
+    // Function to set cookies
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = `expires=${date.toUTCString()}`;
+      document.cookie = `${name}=${value}; ${expires}; path=/`;
+    }
+
     // Function to parse favorites from cookies
     function getFavorites() {
       const favorites = getCookie('favorites');
       return favorites ? JSON.parse(favorites) : [];
     }
 
-
+    // Function to save favorites to cookies
+    function saveFavorites(favorites) {
+      setCookie('favorites', JSON.stringify(favorites), 7); // Expires in 7 days
+    }
 
     // Function to add a game to favorites
-    function addToFavorites(game) {
+    function addToFavorites(game, link) {
       let favorites = getFavorites();
-      if (!favorites.includes(game)) {
-        favorites.push(game);
+      if (!favorites.some(fav => fav.game === game)) {
+        favorites.push({ game, link });
         saveFavorites(favorites);
         displayFavorites();
       } else {
@@ -258,25 +90,25 @@
     // Function to remove a game from favorites
     function removeFromFavorites(game) {
       let favorites = getFavorites();
-      favorites = favorites.filter(item => item !== game);
+      favorites = favorites.filter(item => item.game !== game);
       saveFavorites(favorites);
       displayFavorites();
     }
 
-    // Function to display the favorites list
+    // Function to display the favorites list as clickable cards
     function displayFavorites() {
       const favorites = getFavorites();
       const favoritesList = document.getElementById('favorites-list');
       favoritesList.innerHTML = '';
-      favorites.forEach(game => {
-        const li = document.createElement('li');
-        li.textContent = game;
-        const removeButton = document.createElement('button');
-        removeButton.textContent = 'Remove';
-        removeButton.style.marginLeft = '10px';
-        removeButton.onclick = () => removeFromFavorites(game);
-        li.appendChild(removeButton);
-        favoritesList.appendChild(li);
+      favorites.forEach(fav => {
+        const div = document.createElement('div');
+        div.classList.add('game-card');
+        div.onclick = () => window.location.href = fav.link; // Redirect to the game page
+        div.innerHTML = `
+          <span>${fav.game}</span>
+          <button onclick="removeFromFavorites('${fav.game}')" style="margin-top: 10px;">Remove</button>
+        `;
+        favoritesList.appendChild(div);
       });
     }
 
@@ -284,3 +116,4 @@
     displayFavorites();
   </script>
 </body>
+</html>
