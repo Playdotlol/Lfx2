@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         formImage.addEventListener('submit', function (event) {
             event.preventDefault();
             let url = urlInputImage.value.trim();
-            let url2 = window.location.href.split('/')[0];
+            let url2 = window.location.href.split(/[?#]/)[0];
             if (!url.startsWith('https://')) {
                 if (url.includes('/static/images/')) {
                 urlNew = url2 + url;        
