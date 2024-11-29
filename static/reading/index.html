@@ -246,7 +246,7 @@ if (encodedUrl) {
 
     const iframe = document.getElementById("proxyIframe");
 
-    const proxyPath = "/" + encodedUrl
+    const proxyPath = encodedUrl.replace(/$2F/g, "/");
     iframe.src = proxyPath;
 
     console.log("Iframe source set to:", proxyPath);
