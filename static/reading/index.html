@@ -239,8 +239,7 @@
 
 
     <script>
-        const urlParams =localStorage.getItem("url");
-        const encodedUrl = urlParams.get('url');
+        const encodedUrl = localStorage.getItem("url");
 
         if (encodedUrl) {
             console.log("Encoded URL from query string:", encodedUrl);
