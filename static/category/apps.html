@@ -235,7 +235,6 @@
       <img src="/static/images/discord.jpg" width="600" height="400">
       <center><p>Discord</p></center>
     </a>
-   <button onclick="addToFavorites('Discord', `/static/app/corddis.html`, `/static/images/discord.jpg`)">Add to Favorites</button>
   </div>
     
 <div class="settings-card">
@@ -243,7 +242,6 @@
     <img src="/static/images/netflix.png" width="600" height="400">
     <center><p>Netflix</p></center>
     </a>
-   <button onclick="addToFavorites('Netflix', `/static/app/netflix.html`, `/static/images/netflix.png`)">Add to Favorites</button>
   </div>
 
     <div class="settings-card">
@@ -251,7 +249,6 @@
         <img src="/static/images/hulu.png" width="600" height="400">
           <center><p>Hulu</p></center>
     </a>
-   <button onclick="addToFavorites('Hulu', `/static/app/hulu.html`, `/static/images/hulu.png`)">Add to Favorites</button>
   </div>
   
   <div class="settings-card">
@@ -259,7 +256,6 @@
       <img src="/static/images/youtube.jpg" width="600" height="400">
         <center><p>Youtube</p></center>
     </a>
-   <button onclick="addToFavorites('Youtube', `/static/app/tubeyou.html`, `/static/images/youtube.jpg`)">Add to Favorites</button>
   </div>
 </div>
 </center>
@@ -277,51 +273,5 @@
         channel: '1308263296981270552' // #general
     })
 </script>
-  <script>
-    // Function to get cookies
-    function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
-      return '';
-    }
-
-    // Function to set cookies
-    function setCookie(name, value, days) {
-      const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      const expires = `expires=${date.toUTCString()}`;
-      document.cookie = `${name}=${value}; ${expires}; path=/`;
-    }
-
-    // Function to parse favorites from cookies
-    function getFavorites() {
-      const favorites = getCookie('favorites');
-      return favorites ? JSON.parse(favorites) : [];
-    }
-
-    // Function to save favorites to cookies
-    function saveFavorites(favorites) {
-      setCookie('favorites', JSON.stringify(favorites), 7); // Expires in 7 days
-    }
-
-    // Function to add a game to favorites
-    function addToFavorites(game, link, img) {
-      let favorites = getFavorites();
-      if (!favorites.some(fav => fav.game === game)) {
-        favorites.push({ game, link, img });
-        saveFavorites(favorites);
-      } else {
-        alert(`${game} is already in your favorites!`);
-      }
-    }
-
-    // Function to remove a game from favorites
-    function removeFromFavorites(game) {
-      let favorites = getFavorites();
-      favorites = favorites.filter(item => item.game !== game);
-      saveFavorites(favorites);
-    }
-  </script>
 <script>document.addEventListener('DOMContentLoaded', cloakAll());</script>
 </body>
