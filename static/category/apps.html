@@ -235,7 +235,7 @@
       <img src="/static/images/discord.jpg" width="600" height="400">
       <center><p>Discord</p></center>
     </a>
-   <button onclick="addToFavorites('Game 1')">Add to Favorites</button>
+   <button onclick="addToFavorites('Discord', `/static/app/corddis.html`, `/static/images/discord.jpg`)">Add to Favorites</button>
   </div>
     
 <div class="settings-card">
@@ -243,7 +243,7 @@
     <img src="/static/images/netflix.png" width="600" height="400">
     <center><p>Netflix</p></center>
     </a>
-   <button onclick="addToFavorites('Game 2')">Add to Favorites</button>
+   <button onclick="addToFavorites('Netflix', `/static/app/netflix.html`, `/static/images/netflix.png`)">Add to Favorites</button>
   </div>
 
     <div class="settings-card">
@@ -251,7 +251,7 @@
         <img src="/static/images/hulu.png" width="600" height="400">
           <center><p>Hulu</p></center>
     </a>
-   <button onclick="addToFavorites('Game 3')">Add to Favorites</button>
+   <button onclick="addToFavorites('Hulu', `/static/app/hulu.html`, `/static/images/hulu.png`)">AddAdd to Favorites</button>
   </div>
   
   <div class="settings-card">
@@ -259,7 +259,7 @@
       <img src="/static/images/youtube.jpg" width="600" height="400">
         <center><p>Youtube</p></center>
     </a>
-   <button onclick="addToFavorites('Game 4')">Add to Favorites</button>
+   <button onclick="addToFavorites('Youtube', `/static/app/tubeyou.html`, `/static/images/youtube.jpg`)">AddAdd to Favorites</button>
   </div>
 </div>
 </center>
@@ -277,16 +277,7 @@
         channel: '1308263296981270552' // #general
     })
 </script>
-<script>
-    function setCookie(name, value, days) {
-      const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      const expires = `expires=${date.toUTCString()}`;
-      document.cookie = `${name}=${value}; ${expires}; path=/`;
-    }
-function saveFavorites(favorites) {
-      setCookie('favorites', JSON.stringify(favorites), 7); // Expires in 7 days
-    }
+  <script>
     // Function to get cookies
     function getCookie(name) {
       const value = `; ${document.cookie}`;
@@ -294,19 +285,31 @@ function saveFavorites(favorites) {
       if (parts.length === 2) return parts.pop().split(';').shift();
       return '';
     }
+
+    // Function to set cookies
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = `expires=${date.toUTCString()}`;
+      document.cookie = `${name}=${value}; ${expires}; path=/`;
+    }
+
     // Function to parse favorites from cookies
     function getFavorites() {
       const favorites = getCookie('favorites');
       return favorites ? JSON.parse(favorites) : [];
     }
 
-
+    // Function to save favorites to cookies
+    function saveFavorites(favorites) {
+      setCookie('favorites', JSON.stringify(favorites), 7); // Expires in 7 days
+    }
 
     // Function to add a game to favorites
-    function addToFavorites(game) {
+    function addToFavorites(game, link, img) {
       let favorites = getFavorites();
-      if (!favorites.includes(game)) {
-        favorites.push(game);
+      if (!favorites.some(fav => fav.game === game)) {
+        favorites.push({ game, link, img });
         saveFavorites(favorites);
       } else {
         alert(`${game} is already in your favorites!`);
@@ -316,9 +319,30 @@ function saveFavorites(favorites) {
     // Function to remove a game from favorites
     function removeFromFavorites(game) {
       let favorites = getFavorites();
-      favorites = favorites.filter(item => item !== game);
+      favorites = favorites.filter(item => item.game !== game);
       saveFavorites(favorites);
     }
+
+    // Function to display the favorites list as clickable cards
+    function displayFavorites() {
+      const favorites = getFavorites();
+      const favoritesList = document.getElementById('favorites-list');
+      favoritesList.innerHTML = '';
+      favorites.forEach(fav => {
+        const div = document.createElement('div');
+        div.classList.add('game-card');
+        div.onclick = () => window.location.href = fav.link; // Redirect to the game page
+        div.innerHTML = `
+          <span>${fav.game}</span>
+          <img>${fav.img}</img
+          <button onclick="removeFromFavorites('${fav.game}')" style="margin-top: 10px;">Remove</button>
+        `;
+        favoritesList.appendChild(div);
+      });
+    }
+
+    // Initial display of favorites
+    displayFavorites();
   </script>
 <script>document.addEventListener('DOMContentLoaded', cloakAll());</script>
 </body>
