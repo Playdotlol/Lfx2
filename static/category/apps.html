@@ -10,12 +10,15 @@
   <script>Help()</script>
   <script src="/static/tabcloakername.js"></script>
   <script>Help1()</script>
+  <script src="/static/rightclick.js"></script>
+    <script src="/static/navbar.js"></script>
     <link rel="stylesheet" href="/static/style.css">
      <style>
     .settings-card p{color:Black; float: center;   font-size: 35px;}a{color:var(--text-primary)}
         body {
             font-family: Arial, Helvetica, sans-serif;
             background-color: white;
+            text-color: white;
         }
 
         .navbar {
@@ -136,14 +139,6 @@
             }
         }
 </style>
-</head>
-<body>
-
-</head>
-<body>
-</style>
-</head>
-<body>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -230,11 +225,11 @@
 .btn:hover {background: #333;}
 
 .default {color: white;}
-</style>
+    </style>
 </head>
 <body>
-
-<center><div class="container">
+<center>
+    <div class="container">
   <div class="settings-card">
     <a href="/static/app/corddis.html">
       <img src="/static/images/discord.jpg" width="600" height="400">
@@ -242,19 +237,19 @@
     </a>
   </div>
     
-    <div class="settings-card">
-      <a href="/static/app/netflix.html">
-        <img src="/static/images/netflix.png" width="600" height="400">
-          <center><p>Netflix</p></center>
-      </a>
-    </div>
+<div class="settings-card">
+  <a href="/static/app/netflix.html">
+    <img src="/static/images/netflix.png" width="600" height="400">
+    <center><p>Netflix</p></center>
+    </a>
+  </div>
 
     <div class="settings-card">
       <a href="/static/app/hulu.html">
         <img src="/static/images/hulu.png" width="600" height="400">
           <center><p>Hulu</p></center>
-      </a>
-    </div>
+    </a>
+  </div>
   
   <div class="settings-card">
     <a href="/static/app/tubeyou.html">
@@ -262,41 +257,8 @@
         <center><p>Youtube</p></center>
     </a>
   </div>
-</div></center>
-    <style type="text/css">
-        .context-menu {
-            position: absolute;
-            text-align: center;
-            background: lightgray;
-            border: 1px solid black;
-            border-radius: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
-            padding: 10px;
-        }
-
-        .context-menu ul {
-            padding: 0px;
-            margin: 0px;
-            min-width: 150px;
-            list-style: none;
-        }
-
-        .context-menu ul li {
-            padding-bottom: 7px;
-            border-radius: 100px;
-            padding-top: 7px;
-            border: 1px solid black;
-        }
-
-        .context-menu ul li a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .context-menu ul li:hover {
-            background: darkgray;
-        }
-    </style>
+</div>
+</center>
     <div id="contextMenu" class="context-menu" style="display:none">
         <ul>
             <li onclick="openSettings('/')"><a>Home</a></li>
@@ -304,8 +266,7 @@
             <li onclick="cloakAll()"><a>Cloak Tab</a></li>
         </ul>
     </div>
-    <script src="/static/rightclick.js"></script>
-    <script src="/static/navbar.js"></script>
+
       <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
     new Crate({
         server: '1308263296511512647', // School Heaven
