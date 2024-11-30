@@ -91,7 +91,7 @@
         div.onclick = () => window.location.href = fav.link; // Redirect to the game page
         div.innerHTML = `
           <span>${fav.game}</span>
-          <img>${fav.img}</img
+          <img src="${fav.img}">
           <button onclick="removeFromFavorites('${fav.game}')" style="margin-top: 10px;">Remove</button>
         `;
         favoritesList.appendChild(div);
