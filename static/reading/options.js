@@ -30,3 +30,10 @@ function toggleFullscreenPRX() {
         }
     }
 }
+        function goBack() {
+            Proxy.contentWindow.history.back()
+        }
+
+        function goForward() {
+            Proxy.contentWindow.history.forward()
+        }
