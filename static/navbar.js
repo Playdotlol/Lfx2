@@ -111,7 +111,7 @@ function insertNavbar() {
     </style>
 
     <div class="navbar">   
-        <a href="/">Home</a>
+        <a href="/static/index.html">Home</a>
         <a href="/static/contact.html">Contact</a>
         <a href="/static/settings.html">Settings</a>
         <a href="/static/category/shooting.html">Shooting</a>
