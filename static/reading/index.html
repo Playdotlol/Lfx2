@@ -242,10 +242,10 @@
 const encodedUrl = localStorage.getItem("url");
 
 if (encodedUrl) {
-    console.log("Encoded URL from query string:", encodedUrl);
+    console.log("Encoded URL from localStorage:", encodedUrl);
 
-    // Decode the URL twice to handle over-encoding
-    const decodedUrl = decodeURIComponent(decodeURIComponent(encodedUrl));
+    // Decode the URL once
+    const decodedUrl = decodeURIComponent(encodedUrl);
 
     const iframe = document.getElementById("proxyIframe");
 
@@ -254,7 +254,7 @@ if (encodedUrl) {
 
     console.log("Iframe source set to:", decodedUrl);
 } else {
-    console.error("No URL found in the query string.");
+    console.error("No URL found in localStorage.");
 }
     </script>
 </body>
