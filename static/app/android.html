@@ -131,11 +131,14 @@
     <button class="BackButton" id="BackButton" onclick="goBack('embededGame')">Go Back</button>
 
     <button class="ForwardButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button></center>
-<center><iframe id="embededGame" src="/static/embed.html#https://appetize.io/embed/b_vedi2qzapdi6b3feobso6vyrvi"
-      frameborder="0"
-      height= "500px"
-      width= "750px"
-      ></iframe></center>
+<center>
+<iframe 
+    id="embededGame" 
+    src="/static/embed.html#https://appetize.io/embed/b_vedi2qzapdi6b3feobso6vyrvi"
+    frameborder="0"
+    style="width: 100%; height: 100vh; max-width: 750px; max-height: 500px;"
+></iframe>
+</center>
     <style type="text/css">
             iframe {
       display: flex;
