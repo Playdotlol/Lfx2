@@ -172,19 +172,41 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
     </div>    
     <script>
-        function openGame() {
-            var url = "https://loungef2x.vercel.app"; 
-            var win = window.open();
-            win.document.body.style.margin = '0';
-            win.document.body.style.height = '100vh'; 
-            var iframe = win.document.createElement('iframe'); 
-            iframe.style.border = 'none'; 
-            iframe.style.width = '100%'; 
-            iframe.style.height = '100%'; 
-            iframe.src = url; 
-            win.document.body.appendChild(iframe); 
-            window.location.href = "http://google.com"
-        }
+function openGame() {
+    var url = "https://loungef2x.vercel.app"; 
+
+    // Open new window
+    var win = window.open();
+    win.document.body.style.margin = '0';
+    win.document.body.style.height = '100vh'; 
+    
+    // Handle iframe
+    var iframe = win.document.createElement('iframe'); 
+    iframe.style.border = 'none'; 
+    iframe.style.width = '100%'; 
+    iframe.style.height = '100%'; 
+    iframe.src = url; 
+    win.document.body.appendChild(iframe); 
+
+    // Handle favicon
+    var faviconUrl = localStorage.getItem("TabImage") || '/static/images/clever.jpg'; // Use the localStorage value if it exists, otherwise default
+    let link = win.document.createElement('link');
+    link.rel = 'icon';
+    link.type = 'image/png';
+    link.href = faviconUrl;
+    win.document.head.appendChild(link); // Add favicon to the new window's head
+
+    // Handle title
+    var tabText = localStorage.getItem("TabText");
+    if (tabText && tabText !== "null") {
+        win.document.title = tabText; // Set title from localStorage
+    } else {
+        win.document.title = "Clever | Portal"; // Default title
+    }
+
+    // Redirect current page
+    location.replace("http://google.com");
+}
     </script>
         <style type="text/css">
         .context-menu {
