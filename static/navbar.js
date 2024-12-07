@@ -140,16 +140,16 @@ function insertNavbar() {
     })
 </script>
     <script>
-    function goFullscreen(id) {
+function goFullscreen(id) {
     var element = document.getElementById(id);
 
     if (element.requestFullscreen) {
         element.requestFullscreen().catch(err => {
-            console.error('Failed to enter fullscreen mode: ${err.message}');
+            console.error(`Failed to enter fullscreen mode: ${err.message}`);
         });
     } else if (element.mozRequestFullScreen) { // Firefox
         element.mozRequestFullScreen().catch(err => {
-            console.error('Failed to enter fullscreen mode: ${err.message}');
+            console.error(`Failed to enter fullscreen mode: ${err.message}`);
         });
     } else if (element.webkitRequestFullscreen) { // Older WebKit
         element.webkitRequestFullscreen();
