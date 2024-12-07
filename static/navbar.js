@@ -2,6 +2,27 @@
 function insertNavbar() {
     // Define the HTML for the navbar
     const navbarHTML = `
+    <script>
+    function goFullscreen(id) {
+    var element = document.getElementById(id);
+
+    if (element.requestFullscreen) {
+        element.requestFullscreen().catch(err => {
+            console.error(`Failed to enter fullscreen mode: ${err.message}`);
+        });
+    } else if (element.mozRequestFullScreen) { // Firefox
+        element.mozRequestFullScreen().catch(err => {
+            console.error(`Failed to enter fullscreen mode: ${err.message}`);
+        });
+    } else if (element.webkitRequestFullscreen) { // Older WebKit
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) { // IE/Edge
+        element.msRequestFullscreen();
+    } else {
+        console.error("Fullscreen API is not supported on this browser.");
+    }
+}
+</script>
         <style type="text/css">
         .context-menu {
             position: absolute;
