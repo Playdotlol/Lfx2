@@ -145,11 +145,11 @@ function insertNavbar() {
 
     if (element.requestFullscreen) {
         element.requestFullscreen().catch(err => {
-            console.error(`Failed to enter fullscreen mode: ${err.message}`);
+            console.error('Failed to enter fullscreen mode: ${err.message}');
         });
     } else if (element.mozRequestFullScreen) { // Firefox
         element.mozRequestFullScreen().catch(err => {
-            console.error(`Failed to enter fullscreen mode: ${err.message}`);
+            console.error('Failed to enter fullscreen mode: ${err.message}');
         });
     } else if (element.webkitRequestFullscreen) { // Older WebKit
         element.webkitRequestFullscreen();
