@@ -2,7 +2,41 @@
 function insertNavbar() {
   // Define the HTML for the navbar
   const navbarHTML = `
+      <script>
+        let secretSequence = "";
+        const secretCode = "lounge";
+
+        document.addEventListener("keydown", (event) => {
+            secretSequence += event.key.toLowerCase();
+            if (secretSequence.includes(secretCode)) {
+                activateSecretMode();
+                secretSequence = ""; // Reset the sequence after activation
+            }
+            // Limit the sequence length to avoid excessive memory usage
+            if (secretSequence.length > secretCode.length) {
+                secretSequence = secretSequence.slice(-secretCode.length);
+            }
+        });
+
+function activateSecretMode() {
+    const p = document.getElementById("main");
+    p.classList.add("secret-mode");
+}
+    </script>
   <style type="text/css">
+          .secret-mode {
+            color: red;
+            animation: secret-glow 2s infinite alternate;
+        }
+
+        @keyframes secret-glow {
+            0% {
+                text-shadow: 0 0 10px red;
+            }
+            100% {
+                text-shadow: 0 0 20px red;
+            }
+        }
     .context-menu {
       position: absolute;
       text-align: center;
