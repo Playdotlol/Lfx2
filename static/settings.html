@@ -47,12 +47,12 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         };
         const formBackground = document.getElementById('TabBackground');
-    const urlInpuBackground = document.getElementById('TabBackgroundInput');
+    const urlInputBackground = document.getElementById('TabBackgroundInput');
 
-    if (formImage && urlInputImage) {
-        formImage.addEventListener('submit', function (event) {
+    if (formBackground && urlInputBackground) {
+        formBackground.addEventListener('submit', function (event) {
             event.preventDefault();
-            let url = urlInputImage.value.trim();
+            let url = urlInputBackground.value.trim();
             let url2 = window.location.origin
             if (!url.startsWith('https://')) {
                 if (url.includes('/static/images/')) {
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 }
             localStorage.setItem('BackUrl', urlNew);
-            urlInputImage.value = ''; // Clear the input field
+            urlInputBackground.value = ''; // Clear the input field
             cloakAll();
         })
         };
