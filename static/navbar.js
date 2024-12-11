@@ -183,7 +183,7 @@ function insertNavbar() {
   const body = document.body;
   body.insertBefore(navbarDiv, body.firstChild);
 
-
+}
 // Secret code logic
 let secretSequence = "";
 const secretCode = "lounge"; // Change to your desired secret code
