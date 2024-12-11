@@ -69,6 +69,7 @@ function insertNavbar() {
 
     .dropdown {
       float: left;
+      z-index: 1;
       overflow: hidden;
     }
 
