@@ -173,28 +173,27 @@ function insertNavbar() {
         console.error("Fullscreen API is not supported on this browser.");
       }
     }
-  </script>
-        <script>
-        let secretSequence = "";
-        const secretCode = "lounge";
+<script>
+    let secretSequence = "";
+    const secretCode = "xyzzy";
 
-        document.addEventListener("keydown", (event) => {
-            secretSequence += event.key.toLowerCase();
-            if (secretSequence.includes(secretCode)) {
-                activateSecretMode();
-                secretSequence = ""; // Reset the sequence after activation
-            }
-            // Limit the sequence length to avoid excessive memory usage
-            if (secretSequence.length > secretCode.length) {
-                secretSequence = secretSequence.slice(-secretCode.length);
-            }
-        });
+    document.addEventListener("keydown", (event) => {
+        secretSequence += event.key.toLowerCase();
+        if (secretSequence.includes(secretCode)) {
+            activateSecretMode();
+            secretSequence = ""; // Reset the sequence after activation
+        }
+        // Limit the sequence length to avoid excessive memory usage
+        if (secretSequence.length > secretCode.length) {
+            secretSequence = secretSequence.slice(-secretCode.length);
+        }
+    });
 
-function activateSecretMode() {
-    const p = document.getElementById("main");
-    p.classList.add("secret-mode");
-}
-    </script>
+    function activateSecretMode() {
+        const body = document.body; // Get the body element
+        body.classList.add("secret-mode"); // Add the class to the body element
+    }
+</script>
   `;
 
   // Create a div element to hold the navbar
