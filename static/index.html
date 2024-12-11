@@ -28,15 +28,16 @@
 
         @keyframes secret-glow {
             0% {
-                text-shadow: 0 0 10px lime;
+                text-shadow: 0 0 10px red;
             }
             100% {
-                text-shadow: 0 0 20px lime;
+                text-shadow: 0 0 20px red;
             }
         }
     </style>
 </head>
 <body>
+    <div id="main">
     <center>
         <h1>LoungeF2X</h1>
         <h1>
@@ -105,7 +106,8 @@
         });
 
         function activateSecretMode() {
-            document.body.classList.add("secret-mode");
+            const p = document.getElementById("main")
+            p.add("secret-mode");
             alert("Secret Mode Activated! Enjoy the glow effect!");
         }
     </script>
@@ -115,5 +117,6 @@
     <script src="register-sw.js" defer></script>
     <script src="search.js" defer></script>
     <script src="index.js" defer></script>
+        </div>
 </body>
 </html>
