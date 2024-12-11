@@ -87,28 +87,6 @@
             <li onclick="cloakAll()"><a>Cloak Tab</a></li>
         </ul>
     </div>
-
-    <!-- Easter Egg Script -->
-    <script>
-        let secretSequence = "";
-        const secretCode = "lounge";
-
-        document.addEventListener("keydown", (event) => {
-            secretSequence += event.key.toLowerCase();
-            if (secretSequence.includes(secretCode)) {
-                activateSecretMode();
-                secretSequence = ""; // Reset the sequence after activation
-            }
-            // Limit the sequence length to avoid excessive memory usage
-            if (secretSequence.length > secretCode.length) {
-                secretSequence = secretSequence.slice(-secretCode.length);
-            }
-        });
-
-function activateSecretMode() {
-    const p = document.getElementById("main");
-    p.classList.add("secret-mode");
-}
     </script>
       <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
     new Crate({
