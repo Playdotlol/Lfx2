@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>     
     <script src="rightclick.js"></script>
     <script src="navbar.js"></script>
-    <script>window.onload = "cloakAll();"
+    <script>window.onload = "cloakAll();"</script>
     <script>Help1()</script>
     <style>
         body {
@@ -106,13 +106,18 @@
             }
         });
 
-        function activateSecretMode() {
-            const p = document.getElementById("main")
-            p.add("secret-mode");
-            alert("Secret Mode Activated! Enjoy the glow effect!");
-        }
+function activateSecretMode() {
+    const p = document.getElementById("main");
+    p.classList.add("secret-mode");
+    alert("Secret Mode Activated! Enjoy the glow effect!");
+}
     </script>
-
+      <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+    new Crate({
+        server: '1308263296511512647', // School Heaven
+        channel: '1308263296981270552' // #general
+    })
+</script>
     <script src="uv/uv.bundle.js" defer></script>
     <script src="uv/uv.config.js" defer></script>
     <script src="register-sw.js" defer></script>
