@@ -162,7 +162,30 @@ function insertNavbar() {
     }
   </script>
   `;
+const testDiv = document.createElement('div');
+  testDiv.innerHTML = `<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDML6AOn5tGODoFNlK-xuMbSMfhuEdQALA",
+    authDomain: "lounge-d95dc.firebaseapp.com",
+    projectId: "lounge-d95dc",
+    storageBucket: "lounge-d95dc.firebasestorage.app",
+    messagingSenderId: "20672468359",
+    appId: "1:20672468359:web:8291a4c9aa0cf94c2cef22",
+    measurementId: "G-TYMS6Q9MFS"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>`;
   // Create a div element to hold the navbar
   const navbarDiv = document.createElement('div');
   navbarDiv.innerHTML = navbarHTML;
@@ -170,6 +193,7 @@ function insertNavbar() {
   // Insert the navbar at the top of the body
   const body = document.body;
   body.insertBefore(navbarDiv, body.firstChild);
+  body.insertAfter(testDiv, body.lastChild)
 }
 
 // Invoke the function to insert the navbar when the DOM is fully loaded
