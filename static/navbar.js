@@ -209,8 +209,6 @@ const testDiv = document.createElement('div');
   body.insertAfter(testDiv, body.lastChild)
 }
 
-
-}
 // Secret code logic
 let secretSequence = "";
 const secretCode = "lounge"; // Change to your desired secret code
