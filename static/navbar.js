@@ -206,7 +206,8 @@ const testDiv = document.createElement('div');
   // Insert the navbar at the top of the body
   const body = document.body;
   body.insertBefore(navbarDiv, body.firstChild);
-  body.insertAfter(testDiv, body.lastChild)
+body.insertBefore(testDiv, body.lastChild.nextSibling);
+
 }
 
 // Secret code logic
