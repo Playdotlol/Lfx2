@@ -41,7 +41,25 @@ function Help1() {
         document.head.removeChild(existingLink);
     }
 }
+function Help2() {
+// Check if the key "BackURL" exists in localStorage
+const backURL = localStorage.getItem("BackURL");
+
+// Get the body element
+const body = document.body;
+
+// Set the background based on the presence of "BackURL" in localStorage
+if (backURL) {
+    body.style.backgroundImage = `url('${backURL}')`;
+} else {
+    body.style.backgroundImage = "url('/static/images/equinox.webp')";
+}
+
+// Ensure the background does not repeat
+body.style.backgroundRepeat = "no-repeat";
+}
 function cloakAll()  {
     Help1();
     Help();
+    Help2();
 }
