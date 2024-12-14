@@ -210,11 +210,13 @@ function openGame() {
     win.document.body.style.height = '100vh'; 
     
     // Handle iframe
-    var iframe = win.document.createElement('iframe'); 
-    iframe.style.border = 'none'; 
-    iframe.style.width = '100%'; 
-    iframe.style.height = '100%'; 
-    iframe.src = url; 
+var iframe = win.document.createElement('iframe');
+iframe.style.border = 'none';
+iframe.style.width = '100%';
+iframe.style.height = '100%';
+iframe.src = url;
+iframe.allowFullscreen = true; // Allow fullscreen
+iframe.allow = "fullscreen"; // Explicit permissions policy
  
     // Handle favicon
     var faviconUrl = localStorage.getItem("TabImage") || '/static/images/clever.jpg'; // Use the localStorage value if it exists, otherwise default
