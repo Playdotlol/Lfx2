@@ -26,7 +26,10 @@ form.addEventListener("submit", async (event) => {
 function search(value, searchEngine) {
   let url = value.trim();
 
-  if (!isUrl(url)) {
+  if (url.includes(" ")) {
+    // If there are spaces, treat it as a search query
+    url = searchEngine.replace('%s', encodeURIComponent(url));
+  } else if (!isUrl(url)) {
     url = searchEngine.replace('%s', encodeURIComponent(url));
   } else if (!(url.startsWith("https://") || url.startsWith("http://"))) {
     url = "http://" + url;
@@ -36,5 +39,6 @@ function search(value, searchEngine) {
 }
 
 function isUrl(val = "") {
-  return /^http(s?):\/\//.test(val) || (val.includes(".") && val.slice(0, 1) !== " ");
+  // Check for valid URLs without spaces
+  return /^http(s?):\/\//.test(val) || (val.includes(".") && !val.includes(" ") && val.slice(0, 1) !== " ");
 }
