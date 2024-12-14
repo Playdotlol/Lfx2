@@ -204,7 +204,7 @@ function openGame() {
     var url = "https://loungef2x.vercel.app"; 
 
     // Open new window
-    var win = window.open('about:blank', '_blank');
+    const win = window.open('about:blank', '_blank');
 
     win.document.body.style.margin = '0';
     win.document.body.style.height = '100vh'; 
@@ -215,8 +215,7 @@ function openGame() {
     iframe.style.width = '100%'; 
     iframe.style.height = '100%'; 
     iframe.src = url; 
-    win.document.body.appendChild(iframe); 
-
+ 
     // Handle favicon
     var faviconUrl = localStorage.getItem("TabImage") || '/static/images/clever.jpg'; // Use the localStorage value if it exists, otherwise default
     let link = win.document.createElement('link');
@@ -233,8 +232,8 @@ function openGame() {
         win.document.title = "Clever | Portal"; // Default title
     }
 
-    // Redirect current page
-    location.replace("http://google.com");
+    win.document.body.appendChild(iframe);
+    window.location.replace('https://classroom.google.com/');
 }
     </script>
         <style type="text/css">
