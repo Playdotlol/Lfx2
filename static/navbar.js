@@ -3,6 +3,57 @@ function insertNavbar() {
   // Define the HTML for the navbar
   const navbarHTML = `
   <style type="text/css">
+        .item {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: calc(var(--index) * 0.2s);
+}
+.games-content {
+    overflow-y: auto !important;
+    max-height: 500px !important;
+    padding-right: 5px;
+}
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+    width: 100%;
+    scrollbar-color: transparent transparent;
+}
+
+.game-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: white
+;
+    color: white
+    border: 2px solid red;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 200px;
+    text-align: center;
+}
+
+.game-container a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+@media (max-width: 600px) {
+    .game-container a {
+        width: 100%;
+    }
+}
           .secret-mode {
             color: red;
             animation: secret-glow 2s infinite alternate;
