@@ -184,26 +184,8 @@ function insertNavbar() {
 
 }
 
-// Secret code logic
-let secretSequence = "";
-const secretCode = "lounge"; // Change to your desired secret code
-
 document.addEventListener("DOMContentLoaded", () => {
     insertNavbar();  // Insert navbar after DOM is ready
-
-    // Secret code detection logic
-    document.addEventListener("keydown", (event) => {
-        secretSequence += event.key.toLowerCase();
-        if (secretSequence.includes(secretCode)) {
-            activateSecretMode();
-            secretSequence = ""; // Reset sequence after activation
-        }
-
-        // Limit sequence length to avoid excessive memory usage
-        if (secretSequence.length > secretCode.length) {
-            secretSequence = secretSequence.slice(-secretCode.length);
-        }
-    });
 });
 
 function activateSecretMode() {
