@@ -51,6 +51,7 @@ const body = document.body;
 // Set the background based on the presence of "BackURL" in localStorage
 if (backURL) {
     body.style.backgroundImage = `url('${backURL}')`;
+    body.classList.add("list");
 } else {
     body.style.backgroundImage = "url('/static/images/equinox.webp')";
 }
