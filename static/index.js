@@ -21,25 +21,45 @@ const error = document.getElementById("uv-error");
 const errorCode = document.getElementById("uv-error-code");
 
 form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  try {
+    await registerSW();
+  } catch (err) {
+    error.textContent = "Failed to register service worker.";
+    errorCode.textContent = err.toString();
+    throw err;
+  }
 
   const url = search(address.value, searchEngine.value);
-  const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
-  localStorage.setItem("url", `${encodeURIComponent(encodedUrl)}`);
-  window.location.href = `/static/reading/`;
+  location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
 });
-function search(value, searchEngine) {
-  let url = value.trim();
-  if (url.includes(" ")) {
-    // If there are spaces, treat it as a search query
-    url = searchEngine.replace('%s', encodeURIComponent(url));
-  } else if (!isUrl(url)) {
-    url = searchEngine.replace('%s', encodeURIComponent(url));
-  } else if (!(url.startsWith("https://") || url.startsWith("http://"))) {
-    url = "http://" + url;
+
+async function launchURL(openURL) {
+  try {
+    await registerSW();
+  } catch (err) {
+    error.textContent = "Failed to register service worker.";
+    errorCode.textContent = err.toString();
+    throw err;
   }
-  return url;
+
+  const url = search(openURL, searchEngine.value);
+  location.href = __uv$config.prefix + __uv$config.encodeUrl(url);
 }
-function isUrl(val = "") {
-  // Check for valid URLs without spaces
-  return /^http(s?):\/\//.test(val) || (val.includes(".") && !val.includes(" ") && val.slice(0, 1) !== " ");
+
+
+async function launchGame(openURL) {
+  try {
+    await registerSW();
+  } catch (err) {
+    error.textContent = "Failed to register service worker.";
+    errorCode.textContent = err.toString();
+    throw err;
+  }
+
+  const url = search(openURL, searchEngine.value);
+  const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
+  localStorage.setItem('storedURL', encodedUrl);
+  window.location.href="/g/gframe.html"
 }
