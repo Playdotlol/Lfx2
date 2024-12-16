@@ -32,7 +32,9 @@ form.addEventListener("submit", async (event) => {
   }
 
   const url = search(address.value, searchEngine.value);
-  window.location.href = "/static/reading/";
+  const encodedUrl = __uv$config.prefix + __uv$config.encodeUrl(url);
+  localStorage.setItem("url", `${encodeURIComponent(encodedUrl)}`);
+  window.location.href = `/static/reading/`;
 });
 
 async function launchURL(openURL) {
