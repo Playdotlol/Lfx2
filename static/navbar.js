@@ -102,6 +102,7 @@ function insertNavbar() {
 
     body {
       font-family: Arial, Helvetica, sans-serif;
+      color: red;
     }
 
     .navbar {
@@ -202,8 +203,8 @@ function insertNavbar() {
 
   <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
     new Crate({
-      server: '1308263296511512647', // School Heaven
-      channel: '1308263296981270552' // #general
+      server: '1262606858846208052',
+      channel: '1262606858846208055'
     })
   </script>
   <script>
