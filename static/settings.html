@@ -52,11 +52,15 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             let url = urlInputBackground.value.trim();
             let url2 = window.location.origin
+            if (url == null && "") {
+                localStorage.setItem('BackURL', '/static/images/equinox.webp');
+            } else {
             if (!url.startsWith('https://')) {
                 const urlNew = url2 + url;        
                 } else {
                  localStorage.setItem('BackURL', 'https://' + url);
             }
+          }
 
             urlInputBackground.value = ''; // Clear the input field
             cloakAll();
@@ -181,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <h1 class="white">Tab Background</h1>
                 <p class="white">Put in the url that you want the background of the tab to be.</p>
     <form id="TabBackground" style="background:transparent">
-        <input type="text" class="CDF" id="TabBackgroundInput" placeholder="Enter your URL here" required>
+        <input type="text" class="CDF" id="TabBackgroundInput" placeholder="Enter your URL here">
         <button type="submit" class="CDF">Save Background</button>
     </form>
       </div>
