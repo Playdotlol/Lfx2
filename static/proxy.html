@@ -1,8 +1,10 @@
-    <DOCTYPE HTML>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clever | Portal</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="tabcloaker.js"></script>
@@ -11,165 +13,61 @@
     <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>     
     <script src="rightclick.js"></script>
     <script src="navbar.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", (event) => { cloakAll(); });</script>
     <script>Help1()</script>
-        <style>
+    <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background-color: white;
-        }
-
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        .navbar a {
-            float: left;
-            font-size: 16px;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .dropdown {
-            float: left;
-            overflow: hidden;
-        }
-
-        .dropdown .dropbtn {
-            font-size: 16px;
-            border: none;
-            outline: none;
-            color: white;
-            padding: 14px 16px;
-            background-color: inherit;
-            font-family: inherit;
-            margin: 0;
-        }
-
-        .navbar a:hover,
-        .dropdown:hover .dropbtn {
-            background-color: red;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            float: none;
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #ddd;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-          
-        .container {
-            display: flex;
-            flex-wrap: wrap; /* Allow the items to wrap */
-            justify-content: center; /* Centering the cards */
-            padding: 20px; /* Add padding around the container */
-        }
-
-        .settings-card {
-            background-color: transperant;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
-            width: 300px; /* Set a fixed width for the card */
-            transition: all .3s ease;
-            margin: 10px; /* Space between cards */
-        }
-
-        .settings-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .settings-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, .2);
-        }
-
-        .typing_desc {
-            font-size: 18px;
-        }
-
-        .btn {
-            border: none;
-            background-color: inherit;
-            padding: 14px 28px;
-            font-size: 16px;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background: #333;
-        }
-
-        .default {
             color: white;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .settings-card {
-                width: 100%; /* Full width on small screens */
-                max-width: 300px; /* Limit max width */
+        .secret-mode {
+            color: red;
+            animation: secret-glow 2s infinite alternate;
+        }
+
+        @keyframes secret-glow {
+            0% {
+                text-shadow: 0 0 10px red;
+            }
+            100% {
+                text-shadow: 0 0 20px red;
             }
         }
-          .form__input {
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  width: 300px;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-  background-color: #222;
-  text-align: center;
-  color: #fff;
-  cursor:cell;
-}
-
-.form__input::placeholder {
-  color: #aaa;
-  text-align: center;
-}
-
-.form__input:hover{
-  cursor:cell;
-}
     </style>
 </head>
 <body>
-  <center>
+    <div class="item" id="main">
+                <center>
     <h1>Proxy</h1>
-<form id="uv-form">
-    <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
-    <input id="uv-address" type="text" placeholder="Search Google or type an URL" class="form__input"/>
-  </form>
-</center>
-<script src="uv/uv.bundle.js" defer></script>
-<script src="uv/uv.config.js" defer></script>
-<script src="register-sw.js" defer></script>
-<script src="search.js" defer></script>
-<script src="index.js" defer></script>
+        <h3>Search Google or type an URL</h3>
+
+        <form id="uv-form">
+            <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
+            <input id="uv-address" type="text" placeholder="Search Google or type an URL" class="form__input"/>
+        </form>
+    </center>
+    <center><p>Made with love by LIS and help from <a href="https://zeelix.xyz/bio.html">Zeeless</a></p></center>
+
+    <div id="contextMenu" class="context-menu" style="display:none">
+        <ul>
+            <li onclick="openSettings('/')"><a>Home</a></li>
+            <li onclick="openSettings('/proxy.html')"><a>Proxy</a></li>
+            <li onclick="cloakAll()"><a>Cloak Tab</a></li>
+        </ul>
+    </div>
+    </script>
+      <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+    new Crate({
+        server: '1308263296511512647', // School Heaven
+        channel: '1308263296981270552' // #general
+    })
+</script>
+    <script src="uv/uv.bundle.js" defer></script>
+    <script src="uv/uv.config.js" defer></script>
+    <script src="register-sw.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="index.js" defer></script>
+        </div>
 </body>
-    </DOCTYPE>
+</html>

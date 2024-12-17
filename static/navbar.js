@@ -3,6 +3,57 @@ function insertNavbar() {
   // Define the HTML for the navbar
   const navbarHTML = `
   <style type="text/css">
+        .item {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: calc(var(--index) * 0.2s);
+}
+.games-content {
+    overflow-y: auto !important;
+    max-height: 500px !important;
+    padding-right: 5px;
+}
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+    width: 100%;
+    scrollbar-color: transparent transparent;
+}
+
+.game-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: white
+;
+    color: white
+    border: 2px solid red;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 200px;
+    text-align: center;
+}
+
+.game-container a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+@media (max-width: 600px) {
+    .game-container a {
+        width: 100%;
+    }
+}
           .secret-mode {
             color: red;
             animation: secret-glow 2s infinite alternate;
@@ -126,6 +177,7 @@ function insertNavbar() {
 
   <div class="navbar">
     <a href="/static/index.html">Home</a>
+    <a href="/static/g.html">Games</a>
     <a href="/static/contact.html">Contact</a>
     <a href="/static/settings.html">Settings</a>
     <a href="/static/category/shooting.html">Shooting</a>
@@ -175,61 +227,17 @@ function insertNavbar() {
       }
     }
   `;
-const testDiv = document.createElement('div');
-  testDiv.innerHTML = `<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDML6AOn5tGODoFNlK-xuMbSMfhuEdQALA",
-    authDomain: "lounge-d95dc.firebaseapp.com",
-    projectId: "lounge-d95dc",
-    storageBucket: "lounge-d95dc.firebasestorage.app",
-    messagingSenderId: "20672468359",
-    appId: "1:20672468359:web:8291a4c9aa0cf94c2cef22",
-    measurementId: "G-TYMS6Q9MFS"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>`;
-  // Create a div element to hold the navbar
   const navbarDiv = document.createElement('div');
   navbarDiv.innerHTML = navbarHTML;
 
   // Insert the navbar at the top of the body
   const body = document.body;
   body.insertBefore(navbarDiv, body.firstChild);
-body.insertBefore(testDiv, body.lastChild.nextSibling);
 
 }
 
-// Secret code logic
-let secretSequence = "";
-const secretCode = "lounge"; // Change to your desired secret code
-
 document.addEventListener("DOMContentLoaded", () => {
     insertNavbar();  // Insert navbar after DOM is ready
-
-    // Secret code detection logic
-    document.addEventListener("keydown", (event) => {
-        secretSequence += event.key.toLowerCase();
-        if (secretSequence.includes(secretCode)) {
-            activateSecretMode();
-            secretSequence = ""; // Reset sequence after activation
-        }
-
-        // Limit sequence length to avoid excessive memory usage
-        if (secretSequence.length > secretCode.length) {
-            secretSequence = secretSequence.slice(-secretCode.length);
-        }
-    });
 });
 
 function activateSecretMode() {

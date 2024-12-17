@@ -112,6 +112,7 @@ div.desc {
   text-align: center;
   color: #fff;
   cursor:cell;
+  margin:10px;
 }
 
 .form__input::placeholder {

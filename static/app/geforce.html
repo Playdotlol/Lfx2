@@ -110,6 +110,7 @@
 </head> 
 
 <body>
+        <div id="main">
 <center><h1><strong>Geforce Now</strong></h1></center>
 <script src="/static/reloadEmbed.js"></script>
 <script src="/static/back.js"></script>
@@ -132,7 +133,7 @@
 
     <button class="ForwardButton" id="ForwardButton" onclick="goForward('embededGame')">Go Forward</button></center>
 <container>
-<center> <iframe height="100%" width="100%" id="embededGame" sandbox="allow-scripts allow-pointer-lock allow-forms allow-same-origin allow-downloads" allowfullscreen="true" src="/static/embed.html#https://play.geforcenow.com/mall/" frameborder="0"></iframe></center></container>
+<center> <iframe height="100%" width="100%" id="embededGame" allowfullscreen="true" src="/static/embed.html#https://play.geforcenow.com/mall/" frameborder="0"></iframe></center></container>
     <style type="text/css">
         .context-menu {
             position: absolute;
@@ -183,6 +184,6 @@
     })
 </script>
 <script>document.addEventListener('DOMContentLoaded', cloakAll());</script>
-</div>
+        </div>
 </body>
 </html>
