@@ -36,12 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
             let url2 = window.location.origin
             let urlNew = "";
             if (!url.startsWith('https://')) {
-                if (url.includes('/static/images/')) {
                 const urlNew = url2 + url;        
                 } else {
                  localStorage.setItem('TabImage', 'https://' + url);
             }
-}
             urlInputImage.value = ''; // Clear the input field
             cloakAll();
         })
@@ -55,12 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
             let url = urlInputBackground.value.trim();
             let url2 = window.location.origin
             if (!url.startsWith('https://')) {
-                if (url.includes('/static/images/')) {
                 const urlNew = url2 + url;        
                 } else {
                  localStorage.setItem('BackURL', 'https://' + url);
             }
-}
 
             urlInputBackground.value = ''; // Clear the input field
             cloakAll();
