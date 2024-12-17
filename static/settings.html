@@ -56,9 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 localStorage.setItem('BackURL', '/static/images/equinox.webp');
             } else {
             if (!url.startsWith('https://')) {
-                const urlNew = url2 + url;        
+                 localStorage.setItem('BackURL', 'https://' + url);        
                 } else {
-                 localStorage.setItem('BackURL', 'https://' + url);
+                 localStorage.setItem('BackURL', url);
             }
           }
 
