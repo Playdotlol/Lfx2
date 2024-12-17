@@ -32,16 +32,13 @@ document.addEventListener('DOMContentLoaded', function () {
     if (formImage && urlInputImage) {
         formImage.addEventListener('submit', function (event) {
             event.preventDefault();
-            let url = urlInputImage.value.trim();
+            let url = urlInputBackground.value.trim();
             let url2 = window.location.origin
             if (!url.startsWith('https://')) {
-                if (url.includes('/static/images/')) {
-                urlNew = url2 + url;        
+                 localStorage.setItem('TabImage', 'https://' + url);        
                 } else {
-                urlNew = 'https://' + url;
+                 localStorage.setItem('TabImage', url);
             }
-}
-            localStorage.setItem('TabImage', urlNew);
             urlInputImage.value = ''; // Clear the input field
             cloakAll();
         })
@@ -55,18 +52,20 @@ document.addEventListener('DOMContentLoaded', function () {
             let url = urlInputBackground.value.trim();
             let url2 = window.location.origin
             if (!url.startsWith('https://')) {
-                if (url.includes('/static/images/')) {
-                urlNew = url2 + url;        
+                 localStorage.setItem('BackURL', 'https://' + url);        
                 } else {
-                urlNew = 'https://' + url;
+                 localStorage.setItem('BackURL', url);
             }
-}
-            localStorage.setItem('BackURL', urlNew);
+
             urlInputBackground.value = ''; // Clear the input field
             cloakAll();
         })
         };
     });
+    function LocalStorageRemove(remove) {
+        localStorage.removeItem(remove);
+        cloakAll();
+    }
 </script>
     <script>Help()</script> 
     <script src=https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js></script>     
@@ -189,10 +188,17 @@ document.addEventListener('DOMContentLoaded', function () {
         <button type="submit" class="CDF">Save Background</button>
     </form>
       </div>
+      <div class="settings-card">
+          <h1 class="white">Reset</h1>
+          <p>Click which one you want to reset.</p>
+          <button class="CDF" onclick="LocalStorageRemove('TabText')">Tab Title</button>
+          <button class="CDF" onclick="LocalStorageRemove('TabImage')">Tab Image</button>
+          <button class="CDF" onclick="LocalStorageRemove('BackURL')">Background</button>
+      </div>
         <div class="settings-card">
             <h1 class="white">About:Blank</h1>
             <p>Cloak the tab to be About:Blank so it doesnt show up in your history.</p>
-            <button id="openGame" class="openGame" onclick="openGame()">Open in About:Blank</button></center>
+            <button id="openGame" class="CDF" onclick="openGame()">Open in About:Blank</button>
         </div>
         <div class="settings-card">
     <h1 class="white">Information</h1>
@@ -280,12 +286,12 @@ iframe.allow = "fullscreen"; // Explicit permissions policy
             <li onclick="cloakAll()"><a>Cloak Tab</a></li>
         </ul>
     </div>
-      <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+  <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
     new Crate({
-        server: '1308263296511512647', // School Heaven
-        channel: '1308263296981270552' // #general
+      server: '1262606858846208052',
+      channel: '1262606858846208055'
     })
-</script>
+  </script>
 <script>document.addEventListener('DOMContentLoaded', cloakAll());</script>
         </div>
 </body>
