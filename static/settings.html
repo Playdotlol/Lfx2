@@ -39,10 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (url.includes('/static/images/')) {
                 const urlNew = url2 + url;        
                 } else {
-                const urlNew = 'https://' + url;
+                 localStorage.setItem('TabImage', 'https://' + url);';
             }
 }
-            localStorage.setItem('TabImage', urlNew);
             urlInputImage.value = ''; // Clear the input field
             cloakAll();
         })
@@ -59,10 +58,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (url.includes('/static/images/')) {
                 const urlNew = url2 + url;        
                 } else {
-                const urlNew = 'https://' + url;
+                 localStorage.setItem('BackURL', 'https://' + url;);
             }
 }
-            localStorage.setItem('BackURL', urlNew);
+
             urlInputBackground.value = ''; // Clear the input field
             cloakAll();
         })
