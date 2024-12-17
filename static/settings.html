@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             let url = urlInputBackground.value.trim();
             let url2 = window.location.origin
-            if (url == null && "") {
+            if (url == null) {
                 localStorage.setItem('BackURL', '/static/images/equinox.webp');
             } else {
             if (!url.startsWith('https://')) {
