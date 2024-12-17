@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
             let urlNew = "";
             if (!url.startsWith('https://')) {
                 if (url.includes('/static/images/')) {
-                urlNew = url2 + url;        
+                const urlNew = url2 + url;        
                 } else {
-                urlNew = 'https://' + url;
+                const urlNew = 'https://' + url;
             }
 }
             localStorage.setItem('TabImage', urlNew);
