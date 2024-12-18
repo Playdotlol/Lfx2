@@ -9,7 +9,7 @@ To deploy this website locally, follow these steps:
 
 ## Hosting
 
-You can host this on any static hosting platoform. <br>
+You can host this on any static hosting platform. <br>
 [![Remix on Glitch](https://binbashbanana.github.io/deploy-buttons/buttons/remade/glitch.svg)](https://glitch.com/edit/#!/import/github/LoungeF2X/Loungef2x-static)
 [![Run on Google Cloud](https://binbashbanana.github.io/deploy-buttons/buttons/remade/googlecloud.svg)](https://deploy.cloud.run/?git_repo=https://github.com/LoungeF2X/Loungef2x-static)
 [![Deploy with Vercel](https://binbashbanana.github.io/deploy-buttons/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/LoungeF2X/Loungef2x-static) 
