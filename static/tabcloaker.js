@@ -52,12 +52,9 @@ const body = document.body;
 if (backURL) {
     body.style.backgroundImage = `url('${backURL}')`;
     body.classList.add("list");
-} else {
-    body.style.backgroundImage = "url('/static/images/equinox.webp')";
-}
-
-// Ensure the background does not repeat
+    // Ensure the background does not repeat
 body.style.backgroundRepeat = "no-repeat";
+}
 }
 function cloakAll()  {
     Help1();
