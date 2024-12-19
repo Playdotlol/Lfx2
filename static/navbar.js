@@ -2,6 +2,14 @@
 function insertNavbar() {
   // Define the HTML for the navbar
   const navbarHTML = `
+      <script src="/static/rightclick.js"></script>
+  <div id="contextMenu" class="context-menu" style="display:none">
+    <ul>
+      <li onclick="openSettings('/')"><a>Home</a></li>
+      <li onclick="openSettings('/static/proxy.html')"><a>Proxy</a></li>
+      <li onclick="cloakAll()"><a>Cloak Tab</a></li>
+    </ul>
+  </div>
   <style type="text/css">
         .item {
     opacity: 0;
