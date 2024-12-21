@@ -2,6 +2,23 @@
 function insertNavbar() {
   // Define the HTML for the navbar
   const navbarHTML = `
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JC8E4VJGL9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JC8E4VJGL9');
+</script>
+      <script src="/static/rightclick.js"></script>
+  <div id="contextMenu" class="context-menu" style="display:none">
+    <ul>
+      <li onclick="openSettings('/')"><a>Home</a></li>
+      <li onclick="openSettings('/static/proxy.html')"><a>Proxy</a></li>
+      <li onclick="cloakAll()"><a>Cloak Tab</a></li>
+    </ul>
+  </div>
   <style type="text/css">
         .item {
     opacity: 0;
@@ -168,13 +185,7 @@ function insertNavbar() {
     }
   </style>
 
-  <div id="contextMenu" class="context-menu" style="display:none">
-    <ul>
-      <li onclick="openSettings('/')"><a>Home</a></li>
-      <li onclick="openSettings('/static/proxy.html')"><a>Proxy</a></li>
-      <li onclick="cloakAll()"><a>Cloak Tab</a></li>
-    </ul>
-  </div>
+
 
   <div class="navbar">
     <a href="/static/index.html">Home</a>
