@@ -58,7 +58,6 @@ if (backURL) {
     // Ensure the background does not repeat
 body.style.backgroundRepeat = "no-repeat";
 }
-}
 function cloakAll()  {
     Help1();
     Help();
