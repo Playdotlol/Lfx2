@@ -334,11 +334,12 @@ function addTab() {
 
     // Redirect to appropriate iframe source
     activeIframe.src = url.startsWith("http") ? `/static/embed.html#${url}` : url;
-    inputElement.value = ''; 
 	}
         function home() {
 	const homeIframe = document.querySelector('.tab-iframe.active');
-        homeIframe.src = '/static/index.html';
+        const inputElement = document.getElementById('search-input');
+	inputElement.value = ''; 
+	homeIframe.src = '/static/index.html';
         }
     </script>
 	  <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
