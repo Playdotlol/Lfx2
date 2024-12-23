@@ -334,7 +334,7 @@ function addTab() {
     // Redirect to appropriate iframe source
     activeIframe.src = url.startsWith("http") ? `/static/embed.html#${url}` : url;
     input.value=''; 
-
+	}
         function home() {
 	const homeIframe = document.querySelector('.tab-iframe.active');
         homeIframe.src = '/static/index.html';
