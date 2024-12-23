@@ -336,7 +336,8 @@ function addTab() {
 }
 
         function home() {
-            activeIframe.src = '/static/index.html';
+	const homeIframe = document.querySelector('.tab-iframe.active');
+        homeIframe.src = '/static/index.html';
         }
     </script>
 	  <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
