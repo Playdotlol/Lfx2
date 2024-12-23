@@ -190,6 +190,7 @@ function insertNavbar() {
   <div class="navbar">
     <a href="/static/index.html">Home</a>
     <a href="/static/g.html">Games</a>
+    <a href="/tabs.html">Tabs (WIP)</a>
     <a href="/static/contact.html">Contact</a>
     <a href="/static/settings.html">Settings</a>
     <a href="/static/category/shooting.html">Shooting</a>
@@ -203,10 +204,6 @@ function insertNavbar() {
         <a href="/static/page/1v1lol.html">1v1.lol</a>
         <a href="/static/app/geforce.html">Fortnite</a>
         <a href="/static/page/bloxro.html">Roblox</a>
-        <a href="/static/page/dogmine.html">Doge Miner</a>
-        <a href="/static/page/shotpixel.html">Pixel Shooter</a>
-        <a href="/static/page/snowrider.html">Snow Rider</a>
-        <a href="/static/page/googlehiphop.html">Google Hip Hop</a>
         <a href="/static/page/taggame.html">Tag Game</a>
       </div>
     </div>
