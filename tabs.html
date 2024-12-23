@@ -296,7 +296,8 @@ function addTab() {
             };
         }
         function search() {
-    const input = document.getElementById('search-input').value.trim();
+    const inputElement = document.getElementById('search-input');
+    const input = inputElement.value.trim();
     const activeIframe = document.querySelector('.tab-iframe.active');
 
     if (!input) return; // Do nothing if the input is empty.
@@ -333,7 +334,7 @@ function addTab() {
 
     // Redirect to appropriate iframe source
     activeIframe.src = url.startsWith("http") ? `/static/embed.html#${url}` : url;
-    input.value=''; 
+    inputElement.value = ''; 
 	}
         function home() {
 	const homeIframe = document.querySelector('.tab-iframe.active');
