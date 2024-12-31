@@ -1,4 +1,6 @@
 ## Deployment
+> [!NOTE]
+> You **can't** deploy to code hosts, Glitch, Koyeb, ect. To deploy to code hosts use [our main repo](https://github.com/LoungeF2X/LoungeF2X/)
 
 To deploy this website locally, follow these steps:
 
