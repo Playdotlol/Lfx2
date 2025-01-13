@@ -127,7 +127,7 @@ function insertNavbar() {
             top: 15px;
             left: 15px;
             padding: 10px 20px;
-            background: #267b2a;
+            background: #333;
             color: white;
             border: none;
             border-radius: 5px;
@@ -265,7 +265,7 @@ function insertNavbar() {
     }
     </script>
     <script>          const toggleBtn = document.querySelector('.toggle-btn');
-        const sidebar = document.querySelector('.sidebar');
+        const sidebar = document.querySelector('.navbarr');
 
         toggleBtn.addEventListener('click', () => {
             sidebar.classList.toggle('show');
