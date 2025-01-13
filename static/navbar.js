@@ -265,7 +265,7 @@ function insertNavbar() {
     }
     </script>
     <script>          const toggleBtn = document.querySelector('.toggle-btn');
-        const sidebar = document.querySelector('.navbarr');
+        const sidebar = document.querySelector('.navbar');
 
         toggleBtn.addEventListener('click', () => {
             sidebar.classList.toggle('show');
