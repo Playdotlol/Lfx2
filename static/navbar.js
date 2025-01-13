@@ -50,8 +50,7 @@ function insertNavbar() {
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background-color: white
-;
+    background-color: white;
     color: white
     border: 2px solid red;
     border-radius: 5px;
@@ -121,6 +120,7 @@ function insertNavbar() {
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: red;
+      margin: 10;
     }
         .toggle-btn {
             position: absolute;
