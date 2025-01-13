@@ -270,6 +270,7 @@ function insertNavbar() {
         toggleBtn.addEventListener('click', () => {
             sidebar.classList.toggle('show');
         });</script>
+        <button class="toggle-btn"><i class="fa fa-bars"></i></button>
   `;
   const navbarDiv = document.createElement('div');
   navbarDiv.innerHTML = navbarHTML;
