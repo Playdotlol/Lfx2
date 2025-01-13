@@ -2,6 +2,7 @@
 function insertNavbar() {
   // Define the HTML for the navbar
   const navbarHTML = `
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC8E4VJGL9"></script>
 <script>
@@ -121,11 +122,38 @@ function insertNavbar() {
       font-family: Arial, Helvetica, sans-serif;
       color: red;
     }
+        .toggle-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 10px 20px;
+            background: #267b2a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            z-index: 1000;
+            transition: background 0.3s ease;
+        }
+        .navbar {
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2);
+            transition: left 0.4s ease;
+        }
 
-    .navbar {
-      overflow: hidden;
-      background-color: #333;
-    }
+        .navbar.show {
+            left: 0;
+        }
 
     .navbar a {
       float: left;
@@ -235,6 +263,13 @@ function insertNavbar() {
         console.error("Fullscreen API is not supported on this browser.");
       }
     }
+    </script>
+    <script>          const toggleBtn = document.querySelector('.toggle-btn');
+        const sidebar = document.querySelector('.sidebar');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });</script>
   `;
   const navbarDiv = document.createElement('div');
   navbarDiv.innerHTML = navbarHTML;
