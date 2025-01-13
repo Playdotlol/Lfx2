@@ -264,14 +264,9 @@ function insertNavbar() {
       }
     }
     </script>
-    <script>          const toggleBtn = document.querySelector('.toggle-btn');
-        const sidebar = document.querySelector('.navbar');
-
-        toggleBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('show');
-        });</script>
-        <button class="toggle-btn"><i class="fa fa-bars"></i></button>
+ <button class="toggle-btn"><i class="fa fa-bars"></i></button>
   `;
+
   const navbarDiv = document.createElement('div');
   navbarDiv.innerHTML = navbarHTML;
 
@@ -279,13 +274,15 @@ function insertNavbar() {
   const body = document.body;
   body.insertBefore(navbarDiv, body.firstChild);
 
+  // Add event listener for the toggle button after inserting the navbar
+  const toggleBtn = document.querySelector('.toggle-btn');
+  const sidebar = document.querySelector('.navbar');
+
+  toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('show');
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    insertNavbar();  // Insert navbar after DOM is ready
+  insertNavbar(); // Insert navbar after DOM is ready
 });
-
-function activateSecretMode() {
-    const body = document.body; // Get the body element
-    body.classList.add("secret-mode"); // Add the class to the body element
-}
