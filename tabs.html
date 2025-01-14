@@ -209,7 +209,7 @@
         <iframe class="tab-iframe active" src="/static/embed.html#https://google.com" id="iframe-1"></iframe>
     </div>
     <script>
-	    function goFullscreen(
+	    function goFullscreen() {
 	 const element = document.querySelector('.tab-iframe.active')
 	    
       if (element.requestFullscreen) {
@@ -228,7 +228,6 @@
         console.error("Fullscreen API is not supported on this browser.");
       }
     }
-	    ) {};
         let tabCount = 1;
 
         function selectTab(tabElement) {
