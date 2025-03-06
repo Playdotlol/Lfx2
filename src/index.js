@@ -11,8 +11,6 @@ const app = express();
 
 // Define custom routes first so they take precedence
 app.get("/", (req, res) => {
-  console.log("Resolved path to index.html:", join(publicPath, "index.html"));
-  res.setHeader('Content-Type', 'text/html'); // Explicitly set content type
   res.send(`
     <html>
       <head>
