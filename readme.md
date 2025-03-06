@@ -1,10 +1,8 @@
 ## Deployment
-> [!NOTE]
-> You **can't** deploy to code hosts, Glitch, Koyeb, ect. To deploy as a web app use [our main repo](https://github.com/LoungeF2X/LoungeF2X/)
 
 To deploy this website locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/LoungeF2X/LoungeF2X-static`
+1. Clone the repository: `git clone https://github.com/LoungeF2X/Loungef2x-static`
 2. Navigate to the project directory: `cd LoungeF2X-static`
 3. Open the index.html file in a web browser (Cannot be run locally).
 <br><br>

@@ -1,0 +1,10 @@
+hosting:
+  site: loungef2x # Replace with your site name
+  public: "/" # Directory containing your website's files
+  ignore:
+    - "**/.*" # Ignore hidden files
+    - "**/node_modules/**" # Ignore node modules
+    - "**/.git/**" # Ignore git files
+  rewrites:
+    - source: '**'
+      destination: '/index.html' # Redirect all requests to index.html
