@@ -1,0 +1,130 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clever | Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="tabcloaker.js"></script>
+    <script>Help()</script>
+    <link rel="icon" type="image/png" href="/static/images/clever.jpg"> 
+    <script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>     
+    <script src="rightclick.js"></script>
+    <script src="navbar.js"></script>
+    <script src="particles.js"></script>
+    <style>
+#particles-js {
+    position: fixed;  /* Keeps it full-screen even when scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: -1;  /* Ensures it stays behind everything */
+}
+
+#main {
+    position: relative;  /* Ensures content appears above the particles */
+    z-index: 1;  /* Moves content in front of particles */
+}
+    </style>
+    <script>document.addEventListener("DOMContentLoaded", (event) => { cloakAll(); });</script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC8E4VJGL9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-JC8E4VJGL9');
+    </script>
+    <script>Help1()</script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+        }
+
+        .secret-mode {
+            color: red;
+            animation: secret-glow 2s infinite alternate;
+        }
+
+        @keyframes secret-glow {
+            0% {
+                text-shadow: 0 0 10px red;
+            }
+            100% {
+                text-shadow: 0 0 20px red;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div id="main">
+    <center>
+        <h1>LoungeF2X</h1>
+        <h1>
+            <span class="typing_desc"></span>
+        </h1>
+        <span id="splash"></span>
+    </center>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new TypeIt(".typing_desc", {
+                speed: 90,
+                waitUntilVisible: true,
+                startDelay: 1000
+            })
+            .type("A place to play Games, LoungeF2X.")
+            .move(-12)
+            .delete(10)
+            .type("use Apps")
+            .move(12)
+            .go();
+        });
+    </script>
+
+    <center>
+        <form id="uv-form">
+            <input id="uv-search-engine" value="https://www.google.com/search?q=%s" type="hidden"/> 
+            <input id="uv-address" type="text" placeholder="Search Google or type an URL" class="form__input"/>
+        </form>
+        <p id="uv-error"></p><p id="uv-error-code"></p>
+    </center>
+
+    <script>
+        console.log("Successfully Loaded");
+        fetch('splash.json')
+            .then((res) => res.json())
+            .then((data) => {
+                document.querySelector('#splash').innerHTML = data[Math.floor(Math.random() * data.length)];
+            });
+    </script>
+
+    <center><p>Made with love by <a href="https://guns.lol/lis_">LIS</a></p></center>
+
+    <div id="contextMenu" class="context-menu" style="display:none">
+        <ul>
+            <li onclick="openSettings('/')"><a>Home</a></li>
+            <li onclick="openSettings('/proxy.html')"><a>Proxy</a></li>
+            <li onclick="cloakAll()"><a>Cloak Tab</a></li>
+        </ul>
+    </div>
+    </script>
+  <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+    new Crate({
+      server: '1262606858846208052',
+      channel: '1262606858846208055'
+    })
+  </script>
+    <script src="/l2x/uv.bundle.js" defer></script>
+    <script src="/l2x/uv.config.js" defer></script>
+    <script src="register-sw.js" defer></script>
+    <script src="search.js" defer></script>
+    <script src="index.js" defer></script>
+        </div>
+</body>
+</html>

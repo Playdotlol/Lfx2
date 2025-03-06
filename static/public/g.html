@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clever</title>
+    <link rel="icon" type="image/png" href="/images/clever.jpg"> 
+  <script src="/tabcloaker.js"></script>
+  <script>Help()</script>
+  <script src="/tabcloakername.js"></script>
+  <script>Help1()</script>
+  <script src="/rightclick.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="/particles.js"></script>
+    <style>#particles-js {
+  position: fixed;  /* Keeps it full-screen even when scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: -1;  /* Ensures it stays behind everything */
+}
+
+#main {
+  position: relative;  /* Ensures content appears above the particles */
+  z-index: 1;  /* Moves content in front of particles */
+}
+</style>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JC8E4VJGL9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-JC8E4VJGL9');
+    </script>
+    <link rel="stylesheet" href="/style.css">
+     <style>
+.games-content {
+    overflow-y: auto !important;
+    max-height: 500px !important;
+    padding-right: 5px;
+    scrollbar-color: transparent transparent;
+
+}
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+    width: 100%;
+    color: red;
+    scrollbar-color: transparent transparent;
+}
+
+.game-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: black;
+    color: red;
+    border: 2px solid red;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 200px;
+    text-align: center;
+}
+
+.game-container a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+@media (max-width: 600px) {
+    .game-container a {
+        width: 100%;
+    }
+}
+</style>
+    <div id="main">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script>
+window.onload = function() {
+  // Get URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const gameUrl = urlParams.get('gameurl');
+
+  // Check if gameUrl param exists
+  if (gameUrl) {
+    const iframe = document.getElementById('gameFrame');
+    const gameCont = document.getElementById('gameCont');
+
+    if (iframe) {
+      iframe.src = `/embed.html#${gameUrl}`;
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.border = 'none';
+      iframe.style.position = 'absolute';
+      iframe.style.top = '0';
+      iframe.style.left = '0';
+
+      if (gameCont) {
+        gameCont.style.display = 'block';
+        gameCont.style.position = 'fixed';
+        gameCont.style.top = '0';
+        gameCont.style.left = '0';
+        gameCont.style.width = '100%';
+        gameCont.style.height = '100%';
+        gameCont.style.zIndex = '999999';
+        gameCont.style.overflow = 'hidden';
+
+        // Create and add back button
+        const backButton = document.createElement('button');
+        backButton.textContent = 'Back';
+        backButton.style.position = 'absolute';
+        backButton.style.top = '10px';
+        backButton.style.right = '10px';
+        backButton.style.zIndex = '10000999999999900';
+        backButton.style.padding = '10px';
+        backButton.style.background = 'black';
+        backButton.style.color = '#ffffff';
+        backButton.style.border = 'none';
+        backButton.style.borderRadius = '5px';
+        backButton.style.cursor = 'pointer';
+        backButton.onclick = function() {
+          window.location.href = '/g.html';
+        };
+        gameCont.appendChild(backButton);
+      } else {
+        console.error('Element with id "gameCont" not found');
+      }
+    } else {
+      console.error('Iframe with id "gameFrame" not found');
+    }
+  } else {
+    // Dynamically load navbar script if no gameUrl is found
+    const script = document.createElement("script");
+    script.src = "/navbar.js";
+    script.onload = function() {
+      console.log("Navbar script loaded successfully");
+      if (typeof insertNavbar === 'function') {
+        insertNavbar();
+      } else {
+        console.error("insertNavbar function not found in navbar.js");
+      }
+    };
+    script.onerror = function() {
+      console.error("Failed to load navbar script");
+    };
+    document.body.appendChild(script);
+
+    console.error('No gameurl parameter found in URL');
+  }
+}
+    </script>
+  </head>
+  <body style="background-color: white">
+<style>
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn:hover {background: #333;}
+
+.default {color: white;}
+    </style>
+</head>
+<body>
+<center>
+  <div id="particles-js"></div>
+  <div id="gameCont" style="display: none; z-index: 10000000000000001;"><iframe id="gameFrame"></iframe></div>
+<div class="games-content">
+<div class="game-container">
+    <div class="">
+    <a href="?gameurl=https://ghgstore311.github.io/g77-3/class-439/">
+      <center><p>1v1.lol</p></center>
+    </a>
+  </div>
+    
+    <div class="">
+  <a href="?gameurl=https://www.easyfun.gg/cloud-games/roblox.html?start=1">
+    <center><p>Roblox</p></center>
+    </a>
+  </div>
+
+    <div class="">
+      <a href="?gameurl=https://dogeminer.se">
+          <center><p>Doge Miner</p></center>
+    </a>
+  </div>
+  
+  <div class="">
+    <a href="?gameurl=https://www.google.com/logos/2017/hiphop/hiphop17.html?hl=en">
+        <center><p>Google Hip Hop</p></center>
+    </a>
+  </div>
+        <div class="">
+    <a href="?gameurl=https://www.yad.com/games/Pixel-Gun-3d/index.html?yad">
+        <center><p>Pixel Gun 3D</p></center>
+    </a>
+  </div>
+        <div class="">
+    <a href="?gameurl=https://gamecomets.github.io/pixel-shooter/">
+        <center><p>Pixel Shooter</p></center>
+    </a>
+  </div>
+        <div class="">
+    <a href="?gameurl=https://abinbins.github.io/a3/tag/">
+        <center><p>Tag Game</p></center>
+    </a>
+  </div>
+        <div class="">
+    <a href="?gameurl=https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/mind4ur/debugactions@6e97a528bfcdd0623e0cd99ad352baebf47a6b70/sr3d2.xml&container=ig">
+        <center><p>Snow Rider</p></center>
+    </a>
+  </div>
+  <div class="">
+    <a href="?gameurl=https://www.easyfun.gg/cloud-games/fortnite-battle-royale-cloud-online.html">
+        <center><p>Fortnite</p></center>
+    </a>
+  </div>
+  <div class="">
+    <a href="?gameurl=https://webglmath.github.io/moto-x3m/">
+        <center><p>Moto X3M</p></center>
+    </a>
+  </div>
+  <div class="">
+    <a href="?gameurl=https://app-376031.games.s3.yandex.net/376031/1vbqix29r7kkwg1i6c8i3dodlb9b7gsb/index.html?sdk=%2Fsdk%2F_%2Fv2.5dac9973b4d02f09a5c8.js#origin=https%3A%2F%2Fplayhop.com&app-id=376031&device-type=desktop">
+        <center><p>20 Minutes Till Dawn</p></center>
+    </a>
+  </div>
+  <div class="">
+    <a href="?gameurl=https://eaglercraft.com/">
+        <center><p>Minecraft</p></center>
+    </a>
+  </div>
+  <div class="">
+    <a href="?gameurl=https://orteil.dashnet.org/cookieclicker/">
+        <center><p>Cookie Clicker</p></center>
+    </a>
+  </div>
+  <div class="">
+    <a href="?gameurl=https://play2048.co/">
+        <center><p>2048</p></center>
+    </a>
+  </div>
+  <div class="">
+    <a href="?gameurl=https://games.crazygames.com/en_US/kour-io/index.html?v=1.324">
+        <center><p>Kour.io</p></center>
+    </a>
+  </div>
+  <div class="">
+    <a href="?gameurl=https://oc-fatih.github.io/g/happy-wheels/">
+        <center><p>Happy Wheels</p></center>
+    </a>
+  </div>
+  <div class="">
+    <a href="?gameurl=https://game.azgame.io/escape-road/">
+        <center><p>Escape Road</p></center>
+    </a>
+  </div>
+  <div class="">
+    <a href="?gameurl=https://game.azgame.io/escape-road-2/">
+        <center><p>Escape Road 2</p></center>
+    </a>
+  </div>
+</div>
+</div>
+</center>
+    <div id="contextMenu" class="context-menu" style="display:none">
+        <ul>
+            <li onclick="openSettings('/')"><a>Home</a></li>
+            <li onclick="openSettings('/proxy.html')"><a>Proxy</a></li>
+            <li onclick="cloakAll()"><a>Cloak Tab</a></li>
+        </ul>
+    </div>
+
+  <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
+    new Crate({
+      server: '1262606858846208052',
+      channel: '1262606858846208055'
+    })
+  </script>
+<script>document.addEventListener('DOMContentLoaded', cloakAll());</script>
+</div>
+</body>
