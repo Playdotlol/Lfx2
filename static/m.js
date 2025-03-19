@@ -186,7 +186,7 @@ function showModal(title, overview, movieId) {
   }
   detailsElem.appendChild(textContainer);
   const iframe = document.getElementById("player");
-  iframe.src = `/static/embed.html#https://vidsrcserver.global.ssl.fastly.net/movie/${movieId}?autoplay=true`;
+  iframe.src = `/static/embed.html#https://vidsrcserver.global.ssl.fastly.net/embed/movie/${movieId}?autoplay=true`;
 
   // Update the list of recently watched movies and refresh recommendations.
   updateRecentlyWatched(movieId);
