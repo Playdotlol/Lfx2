@@ -216,7 +216,7 @@ function insertNavbar() {
     <div class="right-section">
     <a href="/static/index.html">Home</a>
     <a href="/static/g.html">Games</a>
-    <a href="/static/m.html">Movies</a>
+    <a href="/static/l2xflix">L2X-Flix</a>
     <a href="/tabs.html">Browser</a>
     <a href="/ia.html">AI</a>        
     <a href="/static/settings.html">Settings</a>
