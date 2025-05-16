@@ -223,12 +223,6 @@ function insertNavbar() {
 </div>
   </div>
 
-  <script src='https://cdn.jsdelivr.net/npm/@widgetbot/crate@3' async defer>
-    new Crate({
-      server: '1262606858846208052',
-      channel: '1262606858846208055'
-    })
-  </script>
   <script>
     function goFullscreen(id) {
       var element = document.getElementById(id);
